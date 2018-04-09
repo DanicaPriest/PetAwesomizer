@@ -23,7 +23,7 @@ public class PetAwesomizerService {
 
     //maps the data from the petfinder api to an object
     public PetRoot searchPets(String location, String animal) {
-        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&format=json&location=" + location + "&animal=" + animal;
+        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=100&format=json&location=" + location + "&animal=" + animal;
 
         PetRoot pets = restTemplate.getForObject(webUrl, PetRoot.class);
 
