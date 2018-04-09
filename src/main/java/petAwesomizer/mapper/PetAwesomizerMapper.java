@@ -1,4 +1,4 @@
-package mybatis.mapper;
+package petAwesomizer.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
