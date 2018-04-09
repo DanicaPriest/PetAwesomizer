@@ -1,11 +1,9 @@
 package petAwesomizer.controller;
 
 
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import petAwesomizer.model.PetRoot;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.service.PetAwesomizerService;
 
@@ -20,14 +18,24 @@ public class PetAwesomizerController {
     PetAwesomizerService petAwesomizerService;
 
     @RequestMapping("/search")
-    public PetRoot searchPet(@RequestParam (value="location", defaultValue = "virginia")String location) {
-        return petAwesomizerService.searchPets(location);
+    public PetRoot searchPet(@RequestParam (value="location", defaultValue = "virginia")String location,
+                             @RequestParam (value="animal", required= false, defaultValue = "") String animal) {
+        return petAwesomizerService.searchPets(location, animal);
 
     }
 
     @RequestMapping("/")
-    public ArrayList<PetSimplified> mapPet(@RequestParam (value="location", defaultValue = "virginia")String location) {
-        return petAwesomizerService.mapPets(location);
+    public ArrayList<PetSimplified> mapPet(@RequestParam (value="location", defaultValue = "virginia")String location,
+                                           @RequestParam (value="animal", required= false, defaultValue = "") String animal) {
+        return petAwesomizerService.mapPets(location, animal);
+
+    }
+    @RequestMapping(method = RequestMethod.PUT, value = "/load")
+    public ArrayList<PetSimplified> loadPets(@RequestParam (value="location", defaultValue = "virginia")String location,
+                                             @RequestParam (value="animal", required= false, defaultValue = "") String animal) {
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location,animal);
+        petAwesomizerService.insertPets(pets);
+        return pets;
 
     }
 
