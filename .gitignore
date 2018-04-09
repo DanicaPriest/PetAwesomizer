@@ -3,3 +3,4 @@
 .target/
 *.iml
 application.properties
+/resources
