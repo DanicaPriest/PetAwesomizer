@@ -9,6 +9,7 @@ import petAwesomizer.model.CNRoot;
 import petAwesomizer.model.Pet;
 import petAwesomizer.model.PetRoot;
 import petAwesomizer.model.PetSimplified;
+import petAwesomizer.model.Random.Randyroot;
 
 import java.util.ArrayList;
 
@@ -65,8 +66,10 @@ public class PetAwesomizerService {
             obj.setAnimal(p.getAnimal().get$t());
             obj.setSex(p.getSex().get$t());
             obj.setAge(p.getAge().get$t());
+
             //puts city and state into one location instance variable;
             obj.setLocation(p.getContact().getCity().get$t() + ", " + p.getContact().getState().get$t());
+
             //determines sex of pet then changes gender pronouns if it's female
             //maps altered chuck norris fact to pet description instance variable
             if (obj.getSex().contentEquals("F")) {
@@ -74,9 +77,11 @@ public class PetAwesomizerService {
             } else {
                 obj.setDescription(getCNFact(obj.getName()));
             }
-try {
-    obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
-}catch (Exception e){ obj.setPhoto("no photo available");}
+            try {
+                obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
+            } catch (Exception e) {
+                obj.setPhoto("no photo available");
+            }
             obj.setEmail(p.getContact().getEmail().get$t());
 
             objArray.add(obj);
@@ -85,10 +90,45 @@ try {
 
     }
 
+    //gets a random pet from the petfinder api and maps it to the PetSimplified object
+    //user can limit result to animal type
+    public PetSimplified getRandomPet(String animal, String breed) {
+        String webUrl = "http://api.petfinder.com/pet.getRandom?key=9bce8b750600914be2415a1932012ee0&output=basic&format=json" + "&animal=" + animal + "&breed=" + breed;
+
+        Randyroot pet = restTemplate.getForObject(webUrl, Randyroot.class);
+        PetSimplified obj = new PetSimplified();
+
+        obj.setName(pet.getPetfinder().getPet().getName().get$t());
+        obj.setAnimal(pet.getPetfinder().getPet().getAnimal().get$t());
+        obj.setSex(pet.getPetfinder().getPet().getSex().get$t());
+        obj.setAge(pet.getPetfinder().getPet().getAge().get$t());
+
+        //puts city and state into one location instance variable;
+        obj.setLocation(pet.getPetfinder().getPet().getContact().getCity().get$t() + ", " + pet.getPetfinder().getPet().getContact().getState().get$t());
+
+        //determines sex of pet then changes gender pronouns if it's female
+        //maps altered chuck norris fact to pet description instance variable
+        if (obj.getSex().contentEquals("F")) {
+            obj.setDescription(changeGender(getCNFact(obj.getName())));
+        } else {
+            obj.setDescription(getCNFact(obj.getName()));
+        }
+        try {
+            obj.setPhoto(urlFormater(pet.getPetfinder().getPet().getMedia().getPhotos().getPhoto()[0].get$t()));
+        } catch (Exception e) {
+            obj.setPhoto("no photo available");
+        }
+        obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
+
+        return obj;
+    }
+
+    //inserts pets into the mysql database
     public void insertPets(ArrayList<PetSimplified> pets) {
         for (PetSimplified p : pets) {
             petAwesomizerMapper.insertPetsAll(p);
         }
 
     }
+
 }

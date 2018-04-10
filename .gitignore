@@ -3,5 +3,5 @@
 .target/
 *.iml
 application.properties
-src/main/resources
-/resources
+*.properties
+

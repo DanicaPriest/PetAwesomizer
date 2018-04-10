@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Pet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-3" >
+
+    </div>
+    <div class="col-sm-6" id="main">
+        <h1 id="petName"></h1>
+        <img class="img-responsive" id="petIMG" src=""/>
+        <p id="fact"></p>
+        <p id="info"></p>
+        <button th:action="@{/random}" class="btn btn-md btn-warning " type="Submit">New Random Pet</button>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+    </div>
+</div>
+
+
+</body>
+</html>
