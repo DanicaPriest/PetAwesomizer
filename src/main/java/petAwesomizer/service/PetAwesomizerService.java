@@ -116,7 +116,7 @@ public class PetAwesomizerService {
         try {
             obj.setPhoto(urlFormater(pet.getPetfinder().getPet().getMedia().getPhotos().getPhoto()[0].get$t()));
         } catch (Exception e) {
-            obj.setPhoto("no photo available");
+            obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
         }
         obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
 
