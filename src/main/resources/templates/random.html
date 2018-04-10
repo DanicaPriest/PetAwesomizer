@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Pet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background:violet">
+<div class="container-fluid">
+    <h2 id="fact" th:utext="${petFact}" class="text-center"></h2>
+
+    <div class="row">
+
+    <div class="col-sm-6" id="main">
+
+        <img class="img-responsive center-block" height="50%" id="petIMG" th:src = "${petPhoto}" />
+
+    </div>
+        <div>
+
+    <div class="col-sm-6 center-block" style="padding:40px">
+
+
+        <p id="animal" th:text="${animal}" ></p>
+        <p id="sex" th:text="${sex}" ></p>
+        <p id="age" th:text="${age}" ></p>
+        <p id="location" th:text="${location}" ></p>
+        <p id="email" th:text="${email}" ></p>
+        <h1 style="padding:20px" id="petName" th:text = "${petName}" style="padding:5px text-decoration:underlined"></h1>
+        <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
+        <button class="btn btn-md btn-warning" type="submit">New Random Pet</button>
+        </form>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
