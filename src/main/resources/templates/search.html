@@ -1,0 +1,191 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Pet Awesomizer</title> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <style>
+        h2{
+        color:black;
+        padding: 5px;
+        background-color:rgba(255, 204, 255, 0.5);
+        border-radius:8px;
+        }
+        p{
+        color:black;
+        font-size: 20px;
+        }
+        h1{
+        padding-top:5px;
+        padding-bottom:5px;
+        color:black;
+        }
+        img{
+        padding: 5px;
+        }
+        .row{
+        border-bottom: solid 10px navy;
+        }
+
+
+
+
+    </style> 
+ </head> 
+ <body style="background:#9999ff"> 
+  <h1 class="title text-center">Awesomest <span th:text="${animal}"></span> available for adoption near <span th:text="${location}"></span>! </h1> 
+  <div class="container-fluid" id="petResult"> 
+   <h2 class="text-center">MySpace actually isn't your space, it's TOOKIE - A38180785's (he just lets you use it).</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41294098/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>TOOKIE - A38180785</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Adult</p>
+     <p>Location: Newport News, VA</p>
+     <p>Contact Email: shelter-VA406@petfinder.com</p>
+    </div>
+   </div>
+   <h2 class="text-center">MISO - A38004905 invented Kentucky Fried Chicken's famous secret recipe with eleven herbs and spices. Nobody ever mentions the twelfth ingredient: Fear.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41131006/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>MISO - A38004905</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Adult</p>
+     <p>Location: Newport News, VA</p>
+     <p>Contact Email: shelter-VA406@petfinder.com</p>
+    </div>
+   </div>
+   <h2 class="text-center">Booster 's database has only one table, 'Kick', which he DROPs frequently.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Booster</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Young</p>
+     <p>Location: Virginia Beach, VA</p>
+     <p>Contact Email: adoption@vbspca.com</p>
+    </div>
+   </div>
+   <h2 class="text-center">Some people like to eat frogs' legs. Stratus likes to eat lizard legs. Hence, snakes.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Stratus</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Young</p>
+     <p>Location: Virginia Beach, VA</p>
+     <p>Contact Email: adoption@vbspca.com</p>
+    </div>
+   </div>
+   <h2 class="text-center">A diff between your code and Kadabra 's is infinite.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41368243/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Kadabra</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Adult</p>
+     <p>Location: Virginia Beach, VA</p>
+     <p>Contact Email: adoption@vbspca.com</p>
+    </div>
+   </div>
+   <h2 class="text-center">Time waits for no man. Unless that man is Stella .</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/40950901/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Stella</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: F</p>
+     <p>Age: Adult</p>
+     <p>Location: Franklin, VA</p>
+     <p>Contact Email: pacc@pacconline.org</p>
+    </div>
+   </div>
+   <h2 class="text-center">Mystic can taste lies.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/40555061/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Mystic &amp; Harper</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: F</p>
+     <p>Age: Adult</p>
+     <p>Location: Lexington Park, MD</p>
+     <p>Contact Email: adoptions@friendsofrabbits.org</p>
+    </div>
+   </div>
+   <h2 class="text-center">Ariel shot the sheriff, but she round house kicked the deputy.</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/39837604/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Ariel</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: F</p>
+     <p>Age: Adult</p>
+     <p>Location: Lexington Park, MD</p>
+     <p>Contact Email: adoptions@friendsofrabbits.org</p>
+    </div>
+   </div>
+   <h2 class="text-center">Behind every successful man, there is a woman. Behind every dead man, there is Trinity .</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/40180871/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Trinity</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: F</p>
+     <p>Age: Adult</p>
+     <p>Location: DUMFRIES, VA</p>
+     <p>Contact Email: adoptions@friendsofrabbits.org</p>
+    </div>
+   </div>
+   <h2 class="text-center">The First rule of Slater is: you do not talk about Slater .</h2>
+   <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/40540051/1/?.jpg">
+    </div>
+    <div class="col-sm-5" style="padding-top:40px">
+     <h1>Slater</h1>
+     <p style="padding-top:10px">Animal: Rabbit</p>
+     <p>Sex: M</p>
+     <p>Age: Baby</p>
+     <p>Location: DUMFRIES, VA</p>
+     <p>Contact Email: adoptions@friendsofrabbits.org</p>
+    </div>
+   </div>
+  </div>  
+ </body>
+</html>
