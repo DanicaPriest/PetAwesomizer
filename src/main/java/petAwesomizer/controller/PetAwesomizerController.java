@@ -24,33 +24,37 @@ public class PetAwesomizerController {
     PetAwesomizerService petAwesomizerService;
 
 
-
     @RequestMapping("/")
     public ArrayList<PetSimplified> mapPet(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                            @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
 
         return petAwesomizerService.mapPets(location, animal);
     }
+
     @RequestMapping("/search")
     public ModelAndView searchResults(@RequestParam(value = "location", defaultValue = "virginia") String location,
-                                      @RequestParam(value = "animal", required = false, defaultValue = "") String animal ) throws IOException {
-
-        String newSearch = petAwesomizerService.htmlBuilder( location, animal);
+                                      @RequestParam(value = "animal", required = false, defaultValue = "") String animal) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        String newSearch = petAwesomizerService.htmlBuilder(location, animal);
         BufferedWriter writer = new BufferedWriter(new FileWriter("/home/danica/Documents/CodingNomads/Labs/spring/PetAwesomizer/src/main/resources/templates/search.html"));
         writer.write(newSearch);
         writer.close();
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("animal", animal + "s");
+        if (animal.equals("")) {
+            modelAndView.addObject("animal", "pets");
+        } else {
+            modelAndView.addObject("animal", animal + "s");
+        }
         modelAndView.addObject("location", location);
         modelAndView.setViewName("search");
+
         return modelAndView;
     }
 
-    @RequestMapping(value= "/random", method = RequestMethod.GET)
+    @RequestMapping(value = "/random", method = RequestMethod.GET)
     public ModelAndView getRandom(
-            @RequestParam (value="animal", required= false, defaultValue = "") String animal,
-             @RequestParam (value="breed", required= false, defaultValue = "") String breed
+            @RequestParam(value = "animal", required = false, defaultValue = "") String animal,
+            @RequestParam(value = "breed", required = false, defaultValue = "") String breed
     ) {
         ModelAndView modelAndView = new ModelAndView();
         PetSimplified pet = petAwesomizerService.getRandomPet(animal, breed);
@@ -71,6 +75,7 @@ public class PetAwesomizerController {
     @RequestMapping(method = RequestMethod.PUT, value = "/load")
     public ArrayList<PetSimplified> loadPets(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                              @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
+
         ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal);
         petAwesomizerService.insertPets(pets);
 

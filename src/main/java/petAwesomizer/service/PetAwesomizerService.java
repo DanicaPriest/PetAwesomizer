@@ -158,7 +158,7 @@ public class PetAwesomizerService {
 
 
         }
-        return doc.html();
+        return doc.toString();
     }
 
     //inserts pets into the mysql database
