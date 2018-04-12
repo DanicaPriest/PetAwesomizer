@@ -1,9 +1,6 @@
 package petAwesomizer.service;
 
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,8 +11,6 @@ import petAwesomizer.model.PetRoot;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.model.Random.Randyroot;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -29,10 +24,9 @@ public class PetAwesomizerService {
 
     //maps the data from the petfinder api to an object
     public PetRoot searchPets(String location, String animal) {
-        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=10&format=json&location=" + location + "&animal=" + animal;
+        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=50&format=json&location=" + location + "&animal=" + animal;
 
         PetRoot pets = restTemplate.getForObject(webUrl, PetRoot.class);
-
 
         return pets;
     }
@@ -49,7 +43,9 @@ public class PetAwesomizerService {
 
     //changes gender pronouns in description to match sex of pet
     public String changeGender(String text) {
-        return text.replaceAll("\\bhe\\b", "she").replaceAll("\\bhim\\b", "her").replaceAll("\\bhis\\b", "her").replaceAll("\\bhimself\\b", "herself").replaceAll("\\bHe\\b", "She");
+        return text.replaceAll("\\bhe\\b", "she").replaceAll("\\bhim\\b", "her").replaceAll(
+                "\\bhis\\b", "her").replaceAll("\\bhimself\\b", "herself").replaceAll(
+                        "\\bHe\\b", "She").replaceAll("\\bHis\\b", "Her");
     }
 
     //removes the section of the picture url that makes it small
@@ -64,16 +60,18 @@ public class PetAwesomizerService {
         Pet[] pet = searchPets(location, animal).getPetfinder().getPets().getPet();
         ArrayList<PetSimplified> objArray = new ArrayList();
 
+        //loops over the pet array
         for (Pet p : pet) {
+            //creates a new PetSimplified object, sets the instance variables from the pet array
             PetSimplified obj = new PetSimplified();
 
             obj.setName(p.getName().get$t());
-            obj.setAnimal(p.getAnimal().get$t());
-            obj.setSex(p.getSex().get$t());
-            obj.setAge(p.getAge().get$t());
+            obj.setAnimal("Animal: " + p.getAnimal().get$t());
+            obj.setSex("Sex: " + p.getSex().get$t());
+            obj.setAge("Age : "+ p.getAge().get$t());
 
             //puts city and state into one location instance variable;
-            obj.setLocation(p.getContact().getCity().get$t() + ", " + p.getContact().getState().get$t());
+            obj.setLocation("Location: " + p.getContact().getCity().get$t() + ", " + p.getContact().getState().get$t());
 
             //determines sex of pet then changes gender pronouns if it's female
             //maps altered chuck norris fact to pet description instance variable
@@ -87,8 +85,9 @@ public class PetAwesomizerService {
             } catch (Exception e) {
                 obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
             }
-            obj.setEmail(p.getContact().getEmail().get$t());
+            obj.setEmail("Contact Email: " + p.getContact().getEmail().get$t());
 
+            //adds each new object to the ArrayList
             objArray.add(obj);
         }
         return objArray;
@@ -126,39 +125,6 @@ public class PetAwesomizerService {
         obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
 
         return obj;
-    }
-
-    //builds html for search results and writes them to search.html
-    public String htmlBuilder(String location, String animal) throws IOException {
-
-        ArrayList<PetSimplified> htmlPets = mapPets(location, animal);
-        File input = new File("/home/danica/Documents/CodingNomads/Labs/spring/PetAwesomizer/src/main/resources/templates/searchbase.html");
-        Document doc = Jsoup.parse(input, "UTF-8", " ");
-
-
-        for (PetSimplified p : htmlPets
-                ) {
-            org.jsoup.nodes.Element div = doc.select("div").first();
-            div.appendElement("h2").attr("class", "text-center").appendText(p.getDescription());
-
-            Element row = div.appendElement("div").addClass("row");
-            row.appendElement("div").addClass("col-sm-1");
-
-            Element main = row.appendElement("div").addClass("col-sm-6");
-            main.appendElement("img").attr("height", "25%").attr(
-                    "class", "img-responsive center-block").attr("src", p.getPhoto());
-
-            Element info = row.appendElement("div").addClass("col-sm-5").attr("style", "padding-top:40px");
-            info.appendElement("h1").appendText(p.getName());
-            info.appendElement("p").attr("style", "padding-top:10px").appendText("Animal: " + p.getAnimal());
-            info.appendElement("p").appendText("Sex: " + p.getSex());
-            info.appendElement("p").appendText("Age: " + p.getAge());
-            info.appendElement("p").appendText("Location: " + p.getLocation());
-            info.appendElement("p").appendText("Contact Email: " + p.getEmail());
-
-
-        }
-        return doc.toString();
     }
 
     //inserts pets into the mysql database

@@ -26,65 +26,68 @@
 
     </style>
 </head>
-<body>
-<form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
-    <button class="btn btn-md btn-warning" type="submit" style="color:navy">Show Me a Random Pet!
-    </button>
-</form>
+<body style="background:#9999ff">
+
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form  th:action="@{/search}"
-                  th:object="${user}" method="post" class="form-horizontal"
+            <form  th:action="@{/petawesomizer/search}"
+                   method="post" class="form-horizontal"
                   role="form">
-                <h2>Find the Adoptable Pets in Your Area!</h2>
+                <h1>Find Adoptable Pets in Your Area!</h1>
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label th:if="" ></label>
-                        <input type="text" th:field="*{name}" placeholder="Name"
+                        <label id="location" >Location:</label>
+                        <input type="text"  placeholder="zipcode or state"
                                class="form-control" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                                  class="validation-message"></label>
-                        <input type="text" th:field="*{lastName}"
-                               placeholder="Last Name" class="form-control" />
+                        <label id="animal">Animal</label>
+                        <select name="animal">
+                            <option value="">All</option>
+                            <option  name="cat" value="cat" class="form-control"> Cat</option>
+                            <option name="dog" value="dog" class="form-control"> Dog</option>>
+                            <option  name="rabbit" value="rabbit" class="form-control"> Rabbit</option>>
+                            <option  name="smallfurry" value="smallfurry" class="form-control">Small Mammals</option>>
+                            <option  name="bird" value="bird" class="form-control"> Bird</option>>
+                            <option name="reptile" value="reptile" class="form-control"> Reptile</option>>
+                            <option name="horse" value="horse" class="form-control"> Horse</option>>
+                            <option name="barnyard" value="barnyard" class="form-control"> Farm Animals</option>
+                        </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <input type="text" th:field="*{email}" placeholder="Email"
-                               class="form-control" /> <label
-                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                            class="validation-message"></label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <input type="password" th:field="*{password}"
-                               placeholder="Password" class="form-control" /> <label
-                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                            class="validation-message"></label>
-                    </div>
-                </div>
+
+
 
                 <div class="form-group">
                     <div class="col-sm-9">
                         <button type="submit" class="btn btn-primary btn-block">I'm Ready for Some Awesome Animals!!!</button>
                     </div>
+
                 </div>
 
-                <span th:utext="${successMessage}"></span>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
+                            <button class="btn btn-md btn-warning btn-block" type="submit" style="color:navy">Show Me a Random Pet!
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+
 
 
             </form>
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

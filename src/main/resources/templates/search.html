@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
- <head> 
-  <meta charset="UTF-8"> 
-  <title>Pet Awesomizer</title> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-  <style>
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Awesomizer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
         h2{
         color:black;
         padding: 5px;
@@ -32,161 +32,42 @@
 
 
 
-    </style> 
- </head> 
- <body style="background:#9999ff"> 
-  <h1 class="title text-center">Awesome <span th:text="${animal}"></span> available for adoption near <span th:text="${location}"></span>! </h1> 
-  <div class="container-fluid" id="petResult"> 
-   <h2 class="text-center">Buttercup ' house has no doors, only walls that she walks through.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/38776828/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Buttercup</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: F</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Johnny compresses his files by doing a flying round house kick to the hard drive.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/38777211/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Johnny</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: M</p>
-     <p>Age: Young</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">In the first Jurassic Park movie, the Tyrannosaurus Rex wasn't chasing the jeep. Krista was chasing the Tyrannosaurus AND the jeep.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/38776531/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Krista</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: F</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">According to Einstein's theory of relativity, Rascal can actually roundhouse kick you yesterday.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41288337/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Rascal</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: M</p>
-     <p>Age: Baby</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Zena played Russian Roulette with a fully loaded gun and won.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41288395/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Zena</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: F</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Indy 's keyboard has the Any key.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41288323/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Indy</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: M</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Only Baboo shuts down websites without due process, not SOPA or PIPA.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41288413/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Baboo</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: M</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Creamsicle cannot love, he can only not kill.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41288361/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Creamsicle</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: M</p>
-     <p>Age: Baby</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Time waits for no man. Unless that man is Maggie .</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/41357759/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Maggie</h1>
-     <p style="padding-top:10px">Animal: Cat</p>
-     <p>Sex: F</p>
-     <p>Age: Adult</p>
-     <p>Location: Ranson, WV</p>
-     <p>Contact Email: mountaincatstnr@gmail.com</p>
-    </div>
-   </div>
-   <h2 class="text-center">Cola never has to build his program to machine code. Machines have learnt to interpret Cola code.</h2>
-   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-6">
-     <img height="25%" class="img-responsive center-block" src="http://photos.petfinder.com/photos/pets/37396747/1/?.jpg">
-    </div>
-    <div class="col-sm-5" style="padding-top:40px">
-     <h1>Cola</h1>
-     <p style="padding-top:10px">Animal: Dog</p>
-     <p>Sex: M</p>
-     <p>Age: Baby</p>
-     <p>Location: Charles Town, WV</p>
-     <p>Contact Email: mel@peacelovedogs.com</p>
-    </div>
-   </div>
-  </div>  
- </body>
+
+    </style>
+</head>
+<body style="background:#9999ff">
+<h1 class="title text-center">Awesome <span th:text="${animal}"></span> available for adoption near <span
+        th:text="${location}"></span>! </h1>
+<div class="container-fluid">
+    <div class="row" th:block th:each="p : ${pets}">
+
+    <h2 id="fact" th:utext="${p.description}" class="text-center"></h2>
+
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6" id="main">
+
+            <img class="img-responsive center-block" height="50%" id="petIMG" th:src="${p.photo}"/>
+
+        </div>
+        <div>
+
+            <div class="col-sm-5 center-block" style="padding:40px">
+
+                <h1 id="petName" th:text="${p.name}"></h1>
+                <p id="animal" th:text="${p.animal}" style="color:navy" style="padding-top:10px"></p>
+                <p id="sex" th:text="${p.sex}"></p>
+                <p id="age" th:text="${p.age}"></p>
+                <p id="location" th:text="${p.location}">Location:</p>
+                <p id="email" th:text="${p.email}" style="padding-bottom:20px"></p>
+
+
+            </div>
+        </div>
+    </div >
+    </th:block>
+</div>
+
+</div>
+</body>
 </html>
