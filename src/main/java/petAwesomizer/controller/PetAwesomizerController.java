@@ -2,15 +2,12 @@ package petAwesomizer.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import petAwesomizer.model.FormCommand;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.service.PetAwesomizerService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -22,9 +19,10 @@ public class PetAwesomizerController {
     PetAwesomizerService petAwesomizerService;
 
     //home page that takes in pet search parameters from user
-@RequestMapping(value={"/", "/home"}, method = RequestMethod.GET)
-public ModelAndView home(){
+@RequestMapping("/")
+public ModelAndView home(@ModelAttribute FormCommand formCommand){
     ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("locationField", formCommand.getLocationField());
     modelAndView.setViewName("home");
 
     return modelAndView;
@@ -32,27 +30,28 @@ public ModelAndView home(){
 
 
     //searches the petfinder database by location and animal and returns the nearest results to search.html
-    @RequestMapping("/search")
-    public ModelAndView searchResults(@RequestParam(value = "location", defaultValue = "virginia") String location,
-                                      @RequestParam(value = "animal", required = false, defaultValue = "") String animal) throws IOException {
+    @PostMapping("/search")
+    public ModelAndView searchResults(@ModelAttribute FormCommand formCommand){
         ModelAndView modelAndView = new ModelAndView();
-        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal);
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue());
         modelAndView.addObject("pets", pets);
 
         //checks if optional animal parameter is blank
-        if (animal.equals("")) {
+        if (formCommand.getAnimalValue().equals("")) {
             //changes animal value to "pets" for the title
             modelAndView.addObject("animal", "pets");
         } else {
             //replaces animal variable in title with animal parameter
-            modelAndView.addObject("animal", animal + "s");
+            modelAndView.addObject("animal", formCommand.getAnimalValue() + "s");
         }
+
         //adds location to title (default is currently virginia)
-        modelAndView.addObject("location", location);
+        modelAndView.addObject("location", formCommand.getLocationField());
         modelAndView.setViewName("search");
 
         return modelAndView;
     }
+
 
     //maps a random animal from petfinder to random.html
     @RequestMapping(value = "/random", method = RequestMethod.GET)

@@ -21,6 +21,31 @@
         padding-bottom:5px;
         color:black;
         }
+        .randombtn {
+  background: #ff002f;
+  background-image: linear-gradient(to top, #ff002f, #870303);
+  text-shadow: 2px 2px 2px black;
+  box-shadow: 3px 7px 2px #820c0c;
+  font-family: Georgia;
+  font-size: 20px;
+  text-decoration: none;
+  border:none
+}
+
+.randombtn:hover {
+  background: #ff0000;
+  background-image: linear-gradient(to top, #ff002f, #fc7e00);
+  text-decoration: none;
+  text-shadow: 2px 2px 2px black;
+  border:none
+}
+.randombtn:active {
+
+text-shadow: 2px 2px 2px black;
+  box-shadow: 0 5px #820c0c;
+  transform: translateY(4px);
+
+}
 
 
 
@@ -49,7 +74,7 @@
                 <p id="email" th:text="${email}" style="padding-bottom:20px" ></p>
 
                 <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
-                    <button class="btn btn-md btn-warning" type="submit" style="color:navy">New Random Pet
+                    <button class="btn btn-md randombtn" type="submit" style="color:white">New Random Pet
                     </button>
                 </form>
 
