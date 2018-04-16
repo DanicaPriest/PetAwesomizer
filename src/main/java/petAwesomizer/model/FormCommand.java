@@ -3,7 +3,24 @@ package petAwesomizer.model;
 public class FormCommand {
     String locationField;
     String animalValue;
+    String ageValue;
+    String sexValue;
 
+    public String getAgeValue() {
+        return ageValue;
+    }
+
+    public void setAgeValue(String ageValue) {
+        this.ageValue = ageValue;
+    }
+
+    public String getSexValue() {
+        return sexValue;
+    }
+
+    public void setSexValue(String sexValue) {
+        this.sexValue = sexValue;
+    }
 
     public String getLocationField() {
         return locationField;

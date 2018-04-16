@@ -22,7 +22,6 @@ public class PetAwesomizerController {
 @RequestMapping("/")
 public ModelAndView home(@ModelAttribute FormCommand formCommand){
     ModelAndView modelAndView = new ModelAndView();
-    modelAndView.addObject("locationField", formCommand.getLocationField());
     modelAndView.setViewName("home");
 
     return modelAndView;
@@ -33,7 +32,7 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
     @PostMapping("/search")
     public ModelAndView searchResults(@ModelAttribute FormCommand formCommand){
         ModelAndView modelAndView = new ModelAndView();
-        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue());
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue(), formCommand.getAgeValue(), formCommand.getSexValue());
         modelAndView.addObject("pets", pets);
 
         //checks if optional animal parameter is blank
@@ -76,11 +75,12 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
         return modelAndView;
     }
 
+
     @RequestMapping(method = RequestMethod.PUT, value = "/load")
     public ArrayList<PetSimplified> loadPets(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                              @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
 
-        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal);
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal, "", "");
         petAwesomizerService.insertPets(pets);
 
         return pets;
@@ -90,6 +90,6 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
     public ArrayList<PetSimplified> mapPet(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                            @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
 
-        return petAwesomizerService.mapPets(location, animal);
+        return petAwesomizerService.mapPets(location, animal, "", "");
     }
 }

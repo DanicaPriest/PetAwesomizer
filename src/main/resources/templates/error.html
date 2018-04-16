@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pet Awesomizer</title>
+    <title>Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+    body{
+    background-image: url()
+    }
         h2{
         color:black;
         padding: 5px;
@@ -59,7 +62,7 @@ text-shadow: 2px 2px 2px black;
         <div class="col-sm-1"></div>
         <div class="col-sm-6" id="main">
 
-            <img class="img-responsive center-block" height="50%" id="petIMG" th:src="${petPhoto}"/>
+            <img class="img-responsive center-block" height="50%" id="petIMG" />
 
         </div>
         <div>
@@ -69,9 +72,7 @@ text-shadow: 2px 2px 2px black;
                 <h1 id="petName" th:text="${petName}"></h1>
                 <p id="animal" th:text="${animal}" style="color:navy" style="padding-top:10px"></p>
                 <p id="sex" th:text="${sex}"></p>
-                <p id="age" th:text="${age}"></p>
-                <p id="location" th:text="${location}"></p>
-                <p id="email" th:text="${email}" style="padding-bottom:20px" ></p>
+
 
                 <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
                     <button class="btn btn-md randombtn" type="submit" style="color:white">New Random Pet

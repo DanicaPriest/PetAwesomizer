@@ -6,21 +6,48 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        h2{
-        color:black;
-        padding: 5px;
-        background-color:rgba(255, 204, 255, 0.5);
-        border-radius:8px;
-        }
+
         p{
         color:black;
         font-size: 20px;
         }
+
         h1{
-        padding-top:5px;
-        padding-bottom:5px;
+        padding-top:20px;
+        padding-bottom:20px;
         color:black;
         }
+
+        .btnclass {
+        background: #ff002f;
+        background-image: linear-gradient(to top, #ff002f, #fc7e00);
+        text-shadow: 2px 2px 2px black;
+        box-shadow: 3px 5px 2px #820c0c;
+        font-family: Georgia;
+        font-size: 20px;
+        text-decoration: none;
+         font-family: Georgia;
+        font-size: 20px;
+        border:none;
+        }
+
+        .btnclass:hover {
+        background: #ff0000;
+        background-image: linear-gradient(to top, #ff002f, #870303);
+        text-decoration: none;
+        text-shadow: 2px 2px 2px black;
+        border:none
+        }
+
+
+        .btnclass:active{
+        text-shadow: 2px 2px 2px black;
+        box-shadow: 0 3px #820c0c;
+        transform: translateY(4px);
+
+        }
+
+
 
 
 
@@ -32,60 +59,92 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form  th:action="@{/petawesomizer/search}" action="/"
-                   method="post" th:object="${formCommand}" class="form-horizontal center-block">
+            <form th:action="@{/petawesomizer/search}" action="/"
+                  method="post" th:object="${formCommand}" class="form-horizontal center-block">
                 <h1>Find Adoptable Pets in Your Area!</h1>
-                <div class="form-group" >
+                <div class="form-group">
                     <div class="col-sm-9">
-                        <label id="location" >Location:</label>
+                        <label id="location">Location:</label>
                         <input type="text" th:field="*{locationField}" placeholder="zipcode or state"
-                               class="form-control" />
+                               class="form-control"/>
                     </div>
                 </div>
 
-              <div class="form-group">
+                <div class="form-group center-block">
                     <div class="col-sm-9">
-                        <label id="animal" >Animal</label>
-                        <select name="animal"  th:field="*{animalValue}">
-                            <option value="" >All</option>
-                            <option  name="cat" value="cat" > Cat</option>
-                            <option name="dog" value="dog" > Dog</option>>
-                            <option  name="rabbit" value="rabbit" > Rabbit</option>>
-                            <option  name="smallfurry" value="smallfurry" >Small Mammals</option>>
-                            <option  name="bird" value="bird" > Bird</option>>
-                            <option name="reptile" value="reptile" > Reptile</option>>
-                            <option name="horse" value="horse" > Horse</option>>
-                            <option name="barnyard" value="barnyard" > Farm Animals</option>
+                        <label id="animal">Animal</label>
+                        <select name="animal" th:field="*{animalValue}">
+                            <option value="">All</option>
+                            <option name="cat" value="cat"> Cat</option>
+                            <option name="dog" value="dog"> Dog</option>
+
+                            <option name="rabbit" value="rabbit"> Rabbit</option>
+
+                            <option name="smallfurry" value="smallfurry">Small Mammals</option>
+
+                            <option name="bird" value="bird"> Bird</option>
+
+                            <option name="reptile" value="reptile"> Reptile</option>
+
+                            <option name="horse" value="horse"> Horse</option>
+
+                            <option name="barnyard" value="barnyard"> Farm Animals</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group center-block">
+                    <div class="col-sm-9">
+                        <label id="age">Age</label>
+                        <select name="Age" th:field="*{ageValue}">
+                            <option value="">Any</option>
+                            <option name="senior" value="Senior">Senior (good for you!!)</option>
+                            <option name="adult" value="Adult"> Adult</option>
+
+                            <option name="young" value="Young"> Young</option>
+
+                            <option name="baby" value="Baby">Baby</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group center-block">
+                    <div class="col-sm-9">
+                        <label id="sex">Sex</label>
+                        <select name="Sex" th:field="*{sexValue}">
+                            <option value="">Any</option>
+                            <option name="female" value="F">Female</option>
+                            <option name="male" value="M"> Male</option>
+
                         </select>
                     </div>
                 </div>
 
 
-
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">I'm Ready for Some Awesome Animals!!!</button>
+                        <button type="submit" class="btn btn-primary btnclass" style="color:white">I'm Ready for Some Awesome Animals!!!
+                        </button>
                     </div>
 
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <form style="padding-top:10px" th:action="@{/petawesomizer/random}">
-                            <button class="btn btn-md btn-warning btn-block" type="submit">Show Me a Random Pet!
-                            </button>
-                        </form>
                     </div>
-
                 </div>
-
-
-
 
             </form>
+
+            <form th:action="@{/petawesomizer/random}" action="/"
+                  method="get" >
+                <button class="btn randombtn btnclass" type="submit" style="color:white">Show Me a Random Pet
+                </button>
+            </form>
         </div>
-    </div>
+        </div>
 </div>
+
+
 
 
 </body>

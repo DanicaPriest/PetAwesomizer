@@ -23,8 +23,8 @@ public class PetAwesomizerService {
     PetAwesomizerMapper petAwesomizerMapper;
 
     //maps the data from the petfinder api to an object
-    public PetRoot searchPets(String location, String animal) {
-        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=50&format=json&location=" + location + "&animal=" + animal;
+    public PetRoot searchPets(String location, String animal, String age, String sex) {
+        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=50&format=json&location=" + location + "&animal=" + animal + "&age=" + age + "&sex=" + sex;
 
         PetRoot pets = restTemplate.getForObject(webUrl, PetRoot.class);
 
@@ -56,8 +56,8 @@ public class PetAwesomizerService {
     }
 
     //maps the petfinder data to a cleaner format and excludes unneeded data
-    public ArrayList<PetSimplified> mapPets(String location, String animal) {
-        Pet[] pet = searchPets(location, animal).getPetfinder().getPets().getPet();
+    public ArrayList<PetSimplified> mapPets(String location, String animal, String age, String sex) {
+        Pet[] pet = searchPets(location, animal, age, sex).getPetfinder().getPets().getPet();
         ArrayList<PetSimplified> objArray = new ArrayList();
 
         //loops over the pet array
