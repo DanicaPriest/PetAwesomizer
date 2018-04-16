@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-    div{
+    body{
     background:#9999ff;
-    background-image: url(https://farm1.staticflickr.com/894/40759917794_007e608a23_o.jpg);
+
     }
         h1{
-        margin-top:40px;
+        margin-top:20px;
         color:black;
         padding: 5px;
 
@@ -24,28 +24,44 @@
         .randombtn {
   background: #ff002f;
   background-image: linear-gradient(to top, #ff002f, #fc7e00);
-  text-shadow: 2px 2px 2px black;
+  text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
   box-shadow: 3px 5px 2px #820c0c;
   font-family: Georgia;
   font-size: 20px;
   text-decoration: none;
-  border:none
+  border:none;
+  display:inline;
+  margin-top:5px;
 }
 
 .randombtn:hover {
   background: #ff0000;
   background-image: linear-gradient(to top, #ff002f, #870303);
   text-decoration: none;
-  text-shadow: 2px 2px 2px black;
+    text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
+
   border:none
 }
 .randombtn:active {
 
-text-shadow: 2px 2px 2px black;
+    text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
   box-shadow: 0 3px #820c0c;
   transform: translateY(4px);
 
 }
+form{
+display:inline;
+margin:10px;
+}
+img{
+margin-left:10%;
+position:absolute;
+z-index:-1;
+}
+#buttons{
+margin-top:5px;
+}
+
 
 
 
@@ -54,34 +70,33 @@ text-shadow: 2px 2px 2px black;
 </head>
 <body>
 <div class="container-fluid">
-    <div class="col-sm-4"></div>
+    <div class="col-md-3"></div>
 
 
+    <div class="col-sm-5 center-block" id="main">
+        <h1 id="errortitle" class="text-center">Exception Found</h1>
 
-        <div class="col-sm-6 center-block" id="main">
-            <h1 id="errortitle" >Exception Found</h1>
+        <p class="text-center" id="reason" th:text="${reason}" style="padding-top:10px"></p>
+        <p class="text-center" id="message" th:text="${message}"></p>
 
+        <img src="https://farm1.staticflickr.com/894/40759917794_007e608a23_o.jpg" class="img-responsive center-block"/>
 
-
-                <p id="reason" th:text="${reason}" style="padding-top:10px"></p>
-                <p id="message" th:text="${message}"></p>
-<img src="https://farm1.staticflickr.com/894/40759917794_007e608a23_o.jpg" class="img-responsive"/>
-
-
-                <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
-                    <button class="btn btn-md randombtn" type="submit" style="color:white">Show a Random Pet
-                    </button>
-                </form>
-            <form style="margin-top:30px" th:action="@{/petawesomizer/}" action="/"
-                  method="get" >
+        <div id="buttons" class="container">
+            <form th:action="@{/petawesomizer/random}" method="get">
+                <button class="btn btn-md randombtn" type="submit" style="color:white">Show a Random Pet
+                </button>
+            </form>
+            <form th:action="@{/petawesomizer/}" action="/"
+                  method="get">
                 <button class="btn randombtn" type="submit" style="color:white">Back to Search
                 </button>
             </form>
+        </div>
 
 
         </div>
-    <div class="col-sm-4"></div>
-        </div>
+        <div class="col-sm-3"></div>
+    </div>
 
 
 </body>

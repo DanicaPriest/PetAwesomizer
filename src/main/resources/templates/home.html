@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
 
-        p{
+        label{
         color:black;
         font-size: 20px;
         }
@@ -21,7 +21,7 @@
         .btnclass {
         background: #ff002f;
         background-image: linear-gradient(to top, #ff002f, #fc7e00);
-        text-shadow: 2px 2px 2px black;
+         text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
         box-shadow: 3px 5px 2px #820c0c;
         font-family: Georgia;
         font-size: 20px;
@@ -35,16 +35,20 @@
         background: #ff0000;
         background-image: linear-gradient(to top, #ff002f, #870303);
         text-decoration: none;
-        text-shadow: 2px 2px 2px black;
+          text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
         border:none
         }
 
 
         .btnclass:active{
-        text-shadow: 2px 2px 2px black;
+          text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
         box-shadow: 0 3px #820c0c;
         transform: translateY(4px);
 
+        }
+        img{
+        margin-top:-100px;
+        float:right;
         }
 
 
@@ -70,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="form-group center-block">
+                <div class="form-group">
                     <div class="col-sm-9">
                         <label id="animal">Animal</label>
                         <select name="animal" th:field="*{animalValue}">
@@ -92,7 +96,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group center-block">
+                <div class="form-group">
                     <div class="col-sm-9">
                         <label id="age">Age</label>
                         <select name="Age" th:field="*{ageValue}">
@@ -107,7 +111,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group center-block">
+                <div class="form-group">
                     <div class="col-sm-9">
                         <label id="sex">Sex</label>
                         <select name="Sex" th:field="*{sexValue}">
@@ -116,6 +120,13 @@
                             <option name="male" value="M"> Male</option>
 
                         </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label id="count">Results per page:</label>
+                        <input type="number" th:field="*{count}" 
+                               min="2" max="999" class="form-control" required/>
                     </div>
                 </div>
 
@@ -141,11 +152,13 @@
                 </button>
             </form>
         </div>
+
         </div>
+
 </div>
 
 
 
-
+<img class="img-responsive"  src="https://farm1.staticflickr.com/515/19662524356_312720d94b_o.png" width="250px"/>
 </body>
 </html>

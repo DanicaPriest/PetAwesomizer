@@ -2,6 +2,7 @@ package petAwesomizer.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import petAwesomizer.exceptions.ControllerAdviceClass;
@@ -35,10 +36,11 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
 
     //searches the petfinder database by location and animal and returns the nearest results to search.html
     @PostMapping("/search")
-    public ModelAndView searchResults(@ModelAttribute FormCommand formCommand){
+    public ModelAndView searchResults(@ModelAttribute FormCommand formCommand) throws HttpMessageNotReadableException {
         ModelAndView modelAndView = new ModelAndView();
         try{
-        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue(), formCommand.getAgeValue(), formCommand.getSexValue());
+
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue(), formCommand.getAgeValue(), formCommand.getSexValue(), formCommand.getCount());
         modelAndView.addObject("pets", pets);
 
         //checks if optional animal parameter is blank
@@ -93,7 +95,7 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
     public ArrayList<PetSimplified> loadPets(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                              @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
 
-        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal, "", "");
+        ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(location, animal, "", "", "50");
         petAwesomizerService.insertPets(pets);
 
         return pets;
@@ -103,6 +105,6 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
     public ArrayList<PetSimplified> mapPet(@RequestParam(value = "location", defaultValue = "virginia") String location,
                                            @RequestParam(value = "animal", required = false, defaultValue = "") String animal) {
 
-        return petAwesomizerService.mapPets(location, animal, "", "");
+        return petAwesomizerService.mapPets(location, animal, "", "", "50");
     }
 }

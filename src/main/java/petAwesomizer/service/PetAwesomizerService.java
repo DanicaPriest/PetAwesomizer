@@ -23,8 +23,13 @@ public class PetAwesomizerService {
     PetAwesomizerMapper petAwesomizerMapper;
 
     //maps the data from the petfinder api to an object
-    public PetRoot searchPets(String location, String animal, String age, String sex) {
-        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=50&format=json&location=" + location + "&animal=" + animal + "&age=" + age + "&sex=" + sex;
+    public PetRoot searchPets(String location, String animal, String age, String sex, String count) {
+        //adding 1 to count since results in api start at 0
+        int newCount = Integer.parseInt(count);
+        newCount++;
+        count = Integer.toString(newCount);
+        //mapping petfinder to PetRoot object and adding search parameters to url
+        String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=" + count + "&format=json&location=" + location + "&animal=" + animal + "&age=" + age + "&sex=" + sex;
 
         PetRoot pets = restTemplate.getForObject(webUrl, PetRoot.class);
 
@@ -45,7 +50,7 @@ public class PetAwesomizerService {
     public String changeGender(String text) {
         return text.replaceAll("\\bhe\\b", "she").replaceAll("\\bhim\\b", "her").replaceAll(
                 "\\bhis\\b", "her").replaceAll("\\bhimself\\b", "herself").replaceAll(
-                        "\\bHe\\b", "She").replaceAll("\\bHis\\b", "Her");
+                "\\bHe\\b", "She").replaceAll("\\bHis\\b", "Her");
     }
 
     //removes the section of the picture url that makes it small
@@ -56,8 +61,8 @@ public class PetAwesomizerService {
     }
 
     //maps the petfinder data to a cleaner format and excludes unneeded data
-    public ArrayList<PetSimplified> mapPets(String location, String animal, String age, String sex) {
-        Pet[] pet = searchPets(location, animal, age, sex).getPetfinder().getPets().getPet();
+    public ArrayList<PetSimplified> mapPets(String location, String animal, String age, String sex, String count) {
+        Pet[] pet = searchPets(location, animal, age, sex, count).getPetfinder().getPets().getPet();
         ArrayList<PetSimplified> objArray = new ArrayList();
 
         //loops over the pet array
@@ -68,7 +73,7 @@ public class PetAwesomizerService {
             obj.setName(p.getName().get$t());
             obj.setAnimal("Animal: " + p.getAnimal().get$t());
             obj.setSex("Sex: " + p.getSex().get$t());
-            obj.setAge("Age : "+ p.getAge().get$t());
+            obj.setAge("Age : " + p.getAge().get$t());
 
             //puts city and state into one location instance variable;
             obj.setLocation("Location: " + p.getContact().getCity().get$t() + ", " + p.getContact().getState().get$t());

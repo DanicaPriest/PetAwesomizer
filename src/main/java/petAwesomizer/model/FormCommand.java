@@ -5,6 +5,15 @@ public class FormCommand {
     String animalValue;
     String ageValue;
     String sexValue;
+    String count;
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
 
     public String getAgeValue() {
         return ageValue;
