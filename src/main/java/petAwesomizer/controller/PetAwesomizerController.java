@@ -4,6 +4,8 @@ package petAwesomizer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import petAwesomizer.exceptions.ControllerAdviceClass;
+import petAwesomizer.exceptions.CustomException;
 import petAwesomizer.model.FormCommand;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.service.PetAwesomizerService;
@@ -17,6 +19,9 @@ public class PetAwesomizerController {
 
     @Autowired
     PetAwesomizerService petAwesomizerService;
+
+    @Autowired
+    ControllerAdviceClass controllerAdviceClass;
 
     //home page that takes in pet search parameters from user
 @RequestMapping("/")
@@ -32,6 +37,7 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
     @PostMapping("/search")
     public ModelAndView searchResults(@ModelAttribute FormCommand formCommand){
         ModelAndView modelAndView = new ModelAndView();
+        try{
         ArrayList<PetSimplified> pets = petAwesomizerService.mapPets(formCommand.getLocationField(), formCommand.getAnimalValue(), formCommand.getAgeValue(), formCommand.getSexValue());
         modelAndView.addObject("pets", pets);
 
@@ -46,7 +52,14 @@ public ModelAndView home(@ModelAttribute FormCommand formCommand){
 
         //adds location to title (default is currently virginia)
         modelAndView.addObject("location", formCommand.getLocationField());
-        modelAndView.setViewName("search");
+        modelAndView.setViewName("search");}
+        catch (NullPointerException ne){
+            CustomException error = controllerAdviceClass.handle411(ne);
+            modelAndView.addObject("reason", ne.getMessage() );
+            modelAndView.addObject("message", error.getMessage() );
+            modelAndView.setViewName("error");
+            return modelAndView;
+        }
 
         return modelAndView;
     }

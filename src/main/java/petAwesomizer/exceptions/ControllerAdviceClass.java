@@ -69,5 +69,13 @@ import org.springframework.web.servlet.NoHandlerFoundException;
         error.setStatus(404);
         return error;
     }
+    @ExceptionHandler(NullPointerException.class)
+    public @ResponseBody CustomException handle411(NullPointerException e) {
+        CustomException error = new CustomException();
+        error.setReason(e.getMessage());
+        error.setMessage("Your location is not recognized");
+        error.setStatus(404);
+        return error;
+    }
     }
 

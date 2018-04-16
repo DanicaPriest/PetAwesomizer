@@ -73,8 +73,13 @@ text-shadow: 2px 2px 2px black;
                 <p id="location" th:text="${location}"></p>
                 <p id="email" th:text="${email}" style="padding-bottom:20px" ></p>
 
-                <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
+                <form style="margin-top:7px" th:action="@{/petawesomizer/random}" method="get">
                     <button class="btn btn-md randombtn" type="submit" style="color:white">New Random Pet
+                    </button>
+                </form>
+                <form style="margin-top:30px" th:action="@{/petawesomizer/}" action="/"
+                      method="get" >
+                    <button class="btn randombtn" type="submit" style="color:white">Search Pets in Your Area
                     </button>
                 </form>
 

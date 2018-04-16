@@ -6,24 +6,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-    body{
-    background-image: url()
+    div{
+    background:#9999ff;
+    background-image: url(https://farm1.staticflickr.com/894/40759917794_007e608a23_o.jpg);
     }
-        h2{
+        h1{
+        margin-top:40px;
         color:black;
         padding: 5px;
-        background-color:rgba(255, 204, 255, 0.5);
-        border-radius:8px;
+
         }
         p{
         color:black;
         font-size: 20px;
         }
-        h1{
-        padding-top:5px;
-        padding-bottom:5px;
-        color:black;
-        }
+
         .randombtn {
   background: #ff002f;
   background-image: linear-gradient(to top, #ff002f, #fc7e00);
@@ -52,39 +49,39 @@ text-shadow: 2px 2px 2px black;
 
 
 
+
     </style>
 </head>
-<body style="background:#9999ff">
+<body>
 <div class="container-fluid">
-    <h2 id="fact" th:utext="${petFact}" class="text-center"></h2>
+    <div class="col-sm-4"></div>
 
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-6" id="main">
 
-            <img class="img-responsive center-block" height="50%" id="petIMG" />
 
-        </div>
-        <div>
+        <div class="col-sm-6 center-block" id="main">
+            <h1 id="errortitle" >Exception Found</h1>
 
-            <div class="col-sm-5 center-block" style="padding:40px">
 
-                <h1 id="petName" th:text="${petName}"></h1>
-                <p id="animal" th:text="${animal}" style="color:navy" style="padding-top:10px"></p>
-                <p id="sex" th:text="${sex}"></p>
+
+                <p id="reason" th:text="${reason}" style="padding-top:10px"></p>
+                <p id="message" th:text="${message}"></p>
+<img src="https://farm1.staticflickr.com/894/40759917794_007e608a23_o.jpg" class="img-responsive"/>
 
 
                 <form style="padding-top:10px" th:action="@{/petawesomizer/random}" method="get">
-                    <button class="btn btn-md randombtn" type="submit" style="color:white">New Random Pet
+                    <button class="btn btn-md randombtn" type="submit" style="color:white">Show a Random Pet
                     </button>
                 </form>
+            <form style="margin-top:30px" th:action="@{/petawesomizer/}" action="/"
+                  method="get" >
+                <button class="btn randombtn" type="submit" style="color:white">Back to Search
+                </button>
+            </form>
 
-            </div>
+
         </div>
-    </div>
-</div>
-
-</div>
+    <div class="col-sm-4"></div>
+        </div>
 
 
 </body>
