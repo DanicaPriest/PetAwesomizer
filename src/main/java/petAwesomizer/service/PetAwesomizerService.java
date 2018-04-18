@@ -71,8 +71,13 @@ public class PetAwesomizerService {
         for (Pet p : pet) {
             //creates a new PetSimplified object, sets the instance variables from the pet array
             PetSimplified obj = new PetSimplified();
-
             obj.setName(p.getName().get$t());
+
+            //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
+            if (p.getAnimal().get$t().contentEquals("rabbit")) {
+                insertRN(obj.getName());
+            }
+
             obj.setAnimal("Animal: " + p.getAnimal().get$t());
             obj.setSex("Sex: " + p.getSex().get$t());
             obj.setAge("Age : " + p.getAge().get$t());
@@ -131,28 +136,39 @@ public class PetAwesomizerService {
         }
         obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
 
+        //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
+        if (obj.getAnimal().contentEquals("rabbit")) {
+            insertRN(obj.getName());
+        }
+
         return obj;
     }
 
     //Breed List that fills with breed of animal chosen
     //can't get animal value from animal input in home form to send to breed list yet
-public ArrayList<String> getBreedList(String animal){
+    public ArrayList<String> getBreedList(String animal) {
         String webUrl = "http://api.petfinder.com/breed.list?key=9bce8b750600914be2415a1932012ee0&format=json&animal=" + animal;
-    BreedRoot breeds = restTemplate.getForObject(webUrl, BreedRoot.class);
-Breed[] breed = breeds.getPetfinder().getBreeds().getBreed();
-ArrayList<String> breedList = new ArrayList<String>();
-    for (Breed b: breed
-         ) {
-        breedList.add(b.get$t());
+        BreedRoot breeds = restTemplate.getForObject(webUrl, BreedRoot.class);
+        Breed[] breed = breeds.getPetfinder().getBreeds().getBreed();
+        ArrayList<String> breedList = new ArrayList<String>();
+        for (Breed b : breed
+                ) {
+            breedList.add(b.get$t());
+        }
+        return breedList;
     }
-return breedList;
-}
 
     //inserts pets into the mysql database
     public void insertPets(ArrayList<PetSimplified> pets) {
         for (PetSimplified p : pets) {
             petAwesomizerMapper.insertPetsAll(p);
         }
+
+    }
+
+    //inserts rabbit name into the mysql database for Neural network project
+    public void insertRN(String name) {
+        petAwesomizerMapper.insertRabbitName(name);
 
     }
 
