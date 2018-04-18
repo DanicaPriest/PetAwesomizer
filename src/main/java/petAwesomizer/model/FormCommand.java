@@ -6,6 +6,24 @@ public class FormCommand {
     String ageValue;
     String sexValue;
     String count;
+    String breedValue;
+    String breedSelectedValue;
+
+    public String getBreedValue() {
+        return breedValue;
+    }
+
+    public void setBreedValue(String breedValue) {
+        this.breedValue = breedValue;
+    }
+
+    public String getBreedSelectedValue() {
+        return breedSelectedValue;
+    }
+
+    public void setBreedSelectedValue(String breedSelectedValue) {
+        this.breedSelectedValue = breedSelectedValue;
+    }
 
     public String getCount() {
         return count;

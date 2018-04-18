@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import petAwesomizer.mapper.PetAwesomizerMapper;
+import petAwesomizer.model.Breeds.Breed;
+import petAwesomizer.model.Breeds.BreedRoot;
 import petAwesomizer.model.CNRoot;
 import petAwesomizer.model.Pet;
 import petAwesomizer.model.PetRoot;
@@ -131,6 +133,20 @@ public class PetAwesomizerService {
 
         return obj;
     }
+
+    //Breed List that fills with breed of animal chosen
+    //can't get animal value from animal input in home form to send to breed list yet
+public ArrayList<String> getBreedList(String animal){
+        String webUrl = "http://api.petfinder.com/breed.list?key=9bce8b750600914be2415a1932012ee0&format=json&animal=" + animal;
+    BreedRoot breeds = restTemplate.getForObject(webUrl, BreedRoot.class);
+Breed[] breed = breeds.getPetfinder().getBreeds().getBreed();
+ArrayList<String> breedList = new ArrayList<String>();
+    for (Breed b: breed
+         ) {
+        breedList.add(b.get$t());
+    }
+return breedList;
+}
 
     //inserts pets into the mysql database
     public void insertPets(ArrayList<PetSimplified> pets) {

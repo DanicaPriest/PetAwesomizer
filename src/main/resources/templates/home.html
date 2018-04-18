@@ -10,11 +10,12 @@
         label{
         color:black;
         font-size: 20px;
+        display:inline;
         }
 
         h1{
-        padding-top:20px;
-        padding-bottom:20px;
+        padding-top:15px;
+        padding-bottom:15px;
         color:black;
         }
 
@@ -24,10 +25,9 @@
          text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
         box-shadow: 3px 5px 2px #820c0c;
         font-family: Georgia;
-        font-size: 20px;
+        font-size: 18px;
         text-decoration: none;
          font-family: Georgia;
-        font-size: 20px;
         border:none;
         }
 
@@ -39,7 +39,6 @@
         border:none
         }
 
-
         .btnclass:active{
           text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
         box-shadow: 0 3px #820c0c;
@@ -47,7 +46,7 @@
 
         }
         img{
-        margin-top:-100px;
+        margin-top:-145px;
         float:right;
         }
 
@@ -96,6 +95,22 @@
                         </select>
                     </div>
                 </div>
+
+                <!--Breed List that fills with breed of animal chosen
+                can't get animal value from animal input to send to breed list yet-->
+               <!-- <div class="form-group">
+                    <div class="col-sm-9">
+                        <label id="breed">Breed</label>
+                        <select th:field="*{breedSelectedValue}">
+                            <option value="">All</option>
+                            <option
+                                    th:each="breedvalue: ${breedList}"
+                                    th:value="${breedvalue}"
+                                    th:text="${breedvalue}" ></option>
+                        </select>
+                    </div>
+                </div>-->
+
                 <div class="form-group">
                     <div class="col-sm-9">
                         <label id="age">Age</label>
@@ -125,7 +140,7 @@
                 <div class="form-group">
                     <div class="col-sm-9">
                         <label id="count">Results per page:</label>
-                        <input type="number" th:field="*{count}" 
+                        <input type="number" th:field="*{count}"
                                min="2" max="999" class="form-control" required/>
                     </div>
                 </div>
@@ -147,7 +162,7 @@
             </form>
 
             <form th:action="@{/petawesomizer/random}" action="/"
-                  method="get" >
+                  method="get" style="margin-top:-10px">
                 <button class="btn randombtn btnclass" type="submit" style="color:white">Show Me a Random Pet
                 </button>
             </form>

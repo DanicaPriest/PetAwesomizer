@@ -28,6 +28,12 @@ public class PetAwesomizerController {
 @RequestMapping("/")
 public ModelAndView home(@ModelAttribute FormCommand formCommand){
     ModelAndView modelAndView = new ModelAndView();
+
+    //Breed List that fills with breed of animal chosen
+    //can't get animal value from animal input to send to breed list yet
+    //ArrayList<String> breedList = petAwesomizerService.getBreedList(formCommand.getAnimalValue());
+   // modelAndView.addObject("breedList", breedList );
+
     modelAndView.setViewName("home");
 
     return modelAndView;
