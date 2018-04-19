@@ -50,9 +50,8 @@ public class PetAwesomizerService {
 
     //changes gender pronouns in description to match sex of pet
     public String changeGender(String text) {
-        return text.replaceAll("\\bhe\\b", "she").replaceAll("\\bhim\\b", "her").replaceAll(
-                "\\bhis\\b", "her").replaceAll("\\bhimself\\b", "herself").replaceAll(
-                "\\bHe\\b", "She").replaceAll("\\bHis\\b", "Her");
+        return text.replaceAll("(?i)(\\bhe\\b)", "she").replaceAll("(?i)(\\bhim\\b)", "her").replaceAll(
+                "(?i)(\\bhis\\b)", "her").replaceAll("(?i)(\\bhimself\\b)", "herself");
     }
 
     //removes the section of the picture url that makes it small
@@ -75,7 +74,7 @@ public class PetAwesomizerService {
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
-                insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", ""));
+                insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", "").replaceAll("\\d.*", ""));
             }
 
             obj.setAnimal("Animal: " + p.getAnimal().get$t());
@@ -138,7 +137,7 @@ public class PetAwesomizerService {
 
         //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
         if (obj.getAnimal().contentEquals("Rabbit")) {
-            insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", ""));
+            insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", "").replaceAll("\\d.*", ""));
         }
 
         return obj;
