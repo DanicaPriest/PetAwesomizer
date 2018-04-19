@@ -75,7 +75,7 @@ public class PetAwesomizerService {
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
-                insertRN(obj.getName().replaceAll(" [^\\w].*", ""));
+                insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", ""));
             }
 
             obj.setAnimal("Animal: " + p.getAnimal().get$t());
@@ -138,7 +138,7 @@ public class PetAwesomizerService {
 
         //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
         if (obj.getAnimal().contentEquals("Rabbit")) {
-            insertRN(obj.getName().replaceAll(" [^\\w].*", ""));
+            insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", ""));
         }
 
         return obj;
