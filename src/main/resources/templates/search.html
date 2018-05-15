@@ -7,45 +7,54 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         h2{
-        color:black;
+        color:#461b0d ;
         padding: 5px;
-        background-color:rgba(255, 204, 255, 0.5);
+        background-color:#d8c5ae ;
         border-radius:8px;
         }
         p{
-        color:black;
+        color:#461b0d ;
         font-size: 20px;
         }
         h1{
         padding-top:5px;
         padding-bottom:5px;
-        color:black;
+        color:#461b0d ;
         }
         img{
         padding: 5px;
 
         }
         .row{
-        border-bottom: solid 10px navy;
+        border-bottom: solid 10px #a85638;
         }
         #petName{
         text-decoration: underline;
         }
         .btn-primary{
-        background-color:rgba(255, 204, 255, 0.7);
-        color:black;
+        background: #a85638;
+        box-shadow: 3px 5px 2px #461b0d;
+        color:#461b0d;
+        font-family: Georgia;
+        font-size: 18px;
+        text-decoration: none;
+         font-family: Georgia;
+        border:none;
         font-size:20px;
         float: right;
         margin: 20px;
         }
 
-
+body{
+background:#5ff0ef;
+color:#461b0d;
+}
 
 
 
     </style>
 </head>
-<body style="background:#9999ff">
+<body >
 <h1 class="title text-center">Awesome <span th:text="${animal}"></span> available for adoption near <span
         th:text="${location}"></span>! </h1>
 <div class="container-fluid">
@@ -66,7 +75,7 @@
             <div class="col-sm-5 center-block" style="padding:40px">
 
                 <h1 id="petName" th:text="${p.name}"></h1>
-                <p id="animal" th:text="${p.animal}" style="color:navy" style="padding-top:10px"></p>
+                <p id="animal" th:text="${p.animal}" style="color:#461b0d" style="padding-top:10px"></p>
                 <p id="sex" th:text="${p.sex}"></p>
                 <p id="age" th:text="${p.age}"></p>
                 <p id="location" th:text="${p.location}">Location:</p>

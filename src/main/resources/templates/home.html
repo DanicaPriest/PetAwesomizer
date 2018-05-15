@@ -8,7 +8,7 @@
     <style>
 
         label{
-        color:black;
+        color:#461b0d ;
         font-size: 20px;
         display:inline;
         }
@@ -16,14 +16,12 @@
         h1{
         padding-top:15px;
         padding-bottom:15px;
-        color:black;
+        color:#461b0d ;
         }
 
         .btnclass {
-        background: #ff002f;
-        background-image: linear-gradient(to top, #ff002f, #fc7e00);
-         text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
-        box-shadow: 3px 5px 2px #820c0c;
+        background: #d8c5ae ;
+        box-shadow: 3px 5px 2px #461b0d;
         font-family: Georgia;
         font-size: 18px;
         text-decoration: none;
@@ -32,16 +30,17 @@
         }
 
         .btnclass:hover {
-        background: #ff0000;
-        background-image: linear-gradient(to top, #ff002f, #870303);
+        background: #d8c5ae ;
+        background-image: linear-gradient(to top, #a85638, #d8c5ae );
         text-decoration: none;
-          text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
+
         border:none
         }
 
         .btnclass:active{
-          text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
-        box-shadow: 0 3px #820c0c;
+          background: #d8c5ae ;
+        background-image: linear-gradient(to top, #a85638, #d8c5ae );
+        box-shadow: 0 3px #461b0d;
         transform: translateY(4px);
 
         }
@@ -51,12 +50,15 @@
         }
 
 
-
+body{
+background:#5ff0ef;
+color:#461b0d;
+}
 
 
     </style>
 </head>
-<body style="background:#9999ff">
+<body>
 
 
 <div class="container">
@@ -148,7 +150,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btnclass" style="color:white">I'm Ready for Some Awesome Animals!!!
+                        <button type="submit" class="btn btn-primary btnclass" style="color:#461b0d ">I'm Ready for Some Awesome Animals!!!
                         </button>
                     </div>
 
@@ -163,7 +165,7 @@
 
             <form th:action="@{/petawesomizer/random}" action="/"
                   method="get" style="margin-top:-10px">
-                <button class="btn randombtn btnclass" type="submit" style="color:white">Show Me a Random Pet
+                <button class="btn randombtn btnclass" type="submit" style="color:#461b0d ">Show Me a Random Pet
                 </button>
             </form>
         </div>
