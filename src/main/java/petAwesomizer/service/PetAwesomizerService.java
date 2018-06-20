@@ -91,6 +91,7 @@ public class PetAwesomizerService {
             } else {
                 obj.setDescription(getCNFact(obj.getName()));
             }
+            //sets a default photo if no image is available
             try {
                 obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
             } catch (Exception e) {
