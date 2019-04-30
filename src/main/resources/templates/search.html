@@ -4,58 +4,12 @@
     <meta charset="UTF-8">
     <title>Pet Awesomizer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/maincss.css}" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        h2{
-        color:#461b0d ;
-        padding: 5px;
-        background-color:#d8c5ae ;
-        border-radius:8px;
-        }
-        p{
-        color:#461b0d ;
-        font-size: 20px;
-        }
-        h1{
-        padding-top:5px;
-        padding-bottom:5px;
-        color:#461b0d ;
-        }
-        img{
-        padding: 5px;
 
-        }
-        .row{
-        border-bottom: solid 10px #a85638;
-        }
-        #petName{
-        text-decoration: underline;
-        }
-        .btn-primary{
-        background: #a85638;
-        box-shadow: 3px 5px 2px #461b0d;
-        color:#461b0d;
-        font-family: Georgia;
-        font-size: 18px;
-        text-decoration: none;
-         font-family: Georgia;
-        border:none;
-        font-size:20px;
-        float: right;
-        margin: 20px;
-        }
-
-body{
-background:#5ff0ef;
-color:#461b0d;
-}
-
-
-
-    </style>
 </head>
 <body >
-<h1 class="title text-center">Awesome <span th:text="${animal}"></span> available for adoption near <span
+<h1 class="title text-center" id="searchtitle">Awesome <span th:text="${animal}"></span> available for adoption near <span
         th:text="${location}"></span>! </h1>
 <div class="container-fluid">
     <div class="row" th:block th:each="p : ${pets}">
@@ -72,14 +26,14 @@ color:#461b0d;
 
         <div>
 
-            <div class="col-sm-5 center-block" style="padding:40px">
+            <div id="petinfo" class="col-sm-5 center-block" >
 
                 <h1 id="petName" th:text="${p.name}"></h1>
-                <p id="animal" th:text="${p.animal}" style="color:#461b0d" style="padding-top:10px"></p>
+                <p id="animal" th:text="${p.animal}" ></p>
                 <p id="sex" th:text="${p.sex}"></p>
                 <p id="age" th:text="${p.age}"></p>
                 <p id="location" th:text="${p.location}">Location:</p>
-                <p id="email" th:text="${p.email}" style="padding-bottom:20px"></p>
+                <p id="email" th:text="${p.email}" ></p>
 
 
             </div>
@@ -87,7 +41,7 @@ color:#461b0d;
         </div>
         <form th:action="@{/petawesomizer/}" action="/"
               method="get">
-            <button class="btn btn-primary" type="submit">Back to Search
+            <button id="back" class="btn btnclass" type="submit">Back to Search
             </button>
         </form>
     </div >

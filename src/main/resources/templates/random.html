@@ -4,54 +4,11 @@
     <meta charset="UTF-8">
     <title>Pet Awesomizer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/maincss.css}" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        h2{
-        color:black;
-        padding: 5px;
-        background-color:rgba(255, 204, 255, 0.5);
-        border-radius:8px;
-        }
-        p{
-        color:black;
-        font-size: 20px;
-        }
-        h1{
-        padding-top:5px;
-        padding-bottom:5px;
-        color:black;
-        }
-        .randombtn {
-  background: #ff002f;
-  background-image: linear-gradient(to top, #ff002f, #fc7e00);
-    text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
-  box-shadow: 3px 5px 2px #820c0c;
-  font-family: Georgia;
-  font-size: 20px;
-  text-decoration: none;
-  border:none
-}
 
-.randombtn:hover {
-  background: #ff0000;
-  background-image: linear-gradient(to top, #ff002f, #870303);
-  text-decoration: none;
-    text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
-  border:none
-}
-.randombtn:active {
-
-  text-shadow:  1px 1px 2px #000, -1px -1px 2px #000;
-  box-shadow: 0 3px #820c0c;
-  transform: translateY(4px);
-
-}
-
-
-
-    </style>
 </head>
-<body style="background:#9999ff">
+<body>
 <div class="container-fluid">
     <h2 id="fact" th:utext="${petFact}" class="text-center"></h2>
 
@@ -67,19 +24,19 @@
             <div class="col-sm-5 center-block" style="padding:40px">
 
                 <h1 id="petName" th:text="${petName}"></h1>
-                <p id="animal" th:text="${animal}" style="color:navy" style="padding-top:10px"></p>
+                <p id="animal" th:text="${animal}" ></p>
                 <p id="sex" th:text="${sex}"></p>
                 <p id="age" th:text="${age}"></p>
                 <p id="location" th:text="${location}"></p>
-                <p id="email" th:text="${email}" style="padding-bottom:20px" ></p>
+                <p id="email" th:text="${email}"  ></p>
 
-                <form style="margin-top:7px" th:action="@{/petawesomizer/random}" method="get">
-                    <button class="btn btn-md randombtn" type="submit" style="color:white">New Random Pet
+                <form id="#randombtn" th:action="@{/petawesomizer/random}" method="get">
+                    <button class="btn btnclass" type="submit" >New Random Pet
                     </button>
                 </form>
-                <form style="margin-top:30px" th:action="@{/petawesomizer/}" action="/"
+                <form id="randomform"  th:action="@{/petawesomizer/}" action="/"
                       method="get" >
-                    <button class="btn randombtn" type="submit" style="color:white">Search Pets in Your Area
+                    <button class="btn btnclass" id="randomsearchbtn" type="submit" >Search Pets in Your Area
                     </button>
                 </form>
 

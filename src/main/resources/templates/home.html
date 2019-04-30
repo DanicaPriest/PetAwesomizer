@@ -7,58 +7,7 @@
     <link th:href="@{/css/maincss.css}" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!--<style>
 
-        label{
-        color:#461b0d ;
-        font-size: 20px;
-        display:inline;
-        }
-
-        h1{
-        padding-top:15px;
-        padding-bottom:15px;
-        color:#461b0d ;
-        }
-
-        .btnclass {
-        background: #d8c5ae ;
-        box-shadow: 3px 5px 2px #461b0d;
-        font-family: Georgia;
-        font-size: 18px;
-        text-decoration: none;
-         font-family: Georgia;
-        border:none;
-        }
-
-        .btnclass:hover {
-        background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
-        text-decoration: none;
-
-        border:none
-        }
-
-        .btnclass:active{
-          background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
-        box-shadow: 0 3px #461b0d;
-        transform: translateY(4px);
-
-        }
-        img{
-        margin-top:-145px;
-        float:right;
-        }
-
-
-body{
-background:#5ff0ef;
-color:#461b0d;
-}
-
-
-    </style>-->
 </head>
 <body>
 
@@ -152,7 +101,7 @@ color:#461b0d;
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btnclass" style="color:#461b0d ">I'm Ready for Some Awesome Animals!!!
+                        <button type="submit" class="btn btnclass" >I'm Ready for Some Awesome Animals!!!
                         </button>
                     </div>
 
@@ -165,9 +114,9 @@ color:#461b0d;
 
             </form>
 
-            <form th:action="@{/petawesomizer/random}" action="/"
-                  method="get" style="margin-top:-10px">
-                <button class="btn randombtn btnclass" type="submit" style="color:#461b0d ">Show Me a Random Pet
+            <form id="homerandombtn" th:action="@{/petawesomizer/random}" action="/"
+                  method="get">
+                <button class="btn btnclass" type="submit"  ">Show Me a Random Pet
                 </button>
             </form>
         </div>
@@ -178,6 +127,6 @@ color:#461b0d;
 
 
 
-<img class="img-responsive"  src="https://farm1.staticflickr.com/515/19662524356_312720d94b_o.png" width="250px"/>
+<img class="img-responsive"  id="pony" src="https://farm1.staticflickr.com/515/19662524356_312720d94b_o.png" width="250px"/>
 </body>
 </html>

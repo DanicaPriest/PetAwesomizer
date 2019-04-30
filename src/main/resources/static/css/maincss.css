@@ -1,52 +1,5 @@
- label{
-        color:#461b0d ;
-        font-size: 20px;
-        display:inline;
-        }
-
-        h1{
-        padding-top:15px;
-        padding-bottom:15px;
-        color:#461b0d ;
-        }
-
-        .btnclass {
-        background: #d8c5ae ;
-        box-shadow: 3px 5px 2px #461b0d;
-        font-family: Georgia;
-        font-size: 18px;
-        text-decoration: none;
-         font-family: Georgia;
-        border:none;
-        }
-
-        .btnclass:hover {
-        background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
-        text-decoration: none;
-
-        border:none
-        }
-
-        .btnclass:active{
-          background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
-        box-shadow: 0 3px #461b0d;
-        transform: translateY(4px);
-
-        }
-        img{
-        margin-top:-145px;
-        float:right;
-        }
-
-
-body{
-background:#5ff0ef;
-color:#461b0d;
-}
 label{
-        color:#461b0d ;
+        color:#070303 ;
         font-size: 20px;
         display:inline;
         }
@@ -54,12 +7,13 @@ label{
         h1{
         padding-top:15px;
         padding-bottom:15px;
-        color:#461b0d ;
+        color:#070303 ;
+        text-shadow: 1px 1px 0px #ec3c05;
         }
 
         .btnclass {
-        background: #d8c5ae ;
-        box-shadow: 3px 5px 2px #461b0d;
+        background: #f29040 ;
+        box-shadow: 3px 5px 2px #070303;
         font-family: Georgia;
         font-size: 18px;
         text-decoration: none;
@@ -68,27 +22,84 @@ label{
         }
 
         .btnclass:hover {
-        background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
+  background: rgb(255,236,155);
+  background: radial-gradient(circle, rgba(255,236,155,1) 0%, rgba(242,144,64,1) 55%, rgba(236,60,5,1) 100%);
         text-decoration: none;
-
+        color: #070303
         border:none
         }
 
         .btnclass:active{
-          background: #d8c5ae ;
-        background-image: linear-gradient(to top, #a85638, #d8c5ae );
-        box-shadow: 0 3px #461b0d;
+       background: rgb(255,236,155);
+       background: radial-gradient(circle, rgba(255,236,155,1) 0%, rgba(242,144,64,1) 55%, rgba(236,60,5,1) 100%);
+        box-shadow: 0 3px #070303;
         transform: translateY(4px);
 
         }
-        img{
+        #pony{
         margin-top:-145px;
         float:right;
         }
 
 
 body{
-background:#5ff0ef;
-color:#461b0d;
+background:#ffec9b;
+color:#070303;
+padding:5px;
 }
+#homerandombtn{
+margin-top:-10px;
+margin-bottom: 20px;
+}
+
+ h2{
+        color:#070303 ;
+        padding: 5px;
+        background-color:#f29040 ;
+        border-radius:8px;
+        }
+        p{
+        color:#070303 ;
+        font-size: 20px;
+        }
+         #petIMG{
+                margin: 5px;
+                border: solid 5px #f29040;
+
+                }
+                .row{
+                border-bottom: solid 10px #ec3c05;
+                }
+                #petName{
+                text-decoration: underline;
+                text-shadow: 1px 1px 1px #ec3c05;
+                }
+                   #searchtitle{
+                        padding-top:5px;
+                        padding-bottom:5px;
+                        color:#070303 ;
+                        }
+
+                         #back{
+
+                                font-size: 18px;
+                                font-size:20px;
+                                float: right;
+                                margin: 20px;
+                                }
+       #petinfo{
+       padding:40px;
+       }
+       #email{
+       padding-bottom:40px;
+       }
+       #animal{
+       padding-top:10px;
+       }
+       #randomform{
+       margin-top:30px;
+       }
+
+       #randombtn{
+       margin-top:7px;
+       }
