@@ -26,10 +26,7 @@ public class PetAwesomizerService {
 
     //maps the data from the petfinder api to an object
     public PetRoot searchPets(String location, String animal, String age, String sex, String count) {
-        //adding 1 to count since results in api start at 0
-        int newCount = Integer.parseInt(count);
-        newCount++;
-        count = Integer.toString(newCount);
+
         //mapping petfinder to PetRoot object and adding search parameters to url
         String webUrl = "http://api.petfinder.com/pet.find?key=9bce8b750600914be2415a1932012ee0&count=" + count + "&format=json&location=" + location + "&animal=" + animal + "&age=" + age + "&sex=" + sex;
 
