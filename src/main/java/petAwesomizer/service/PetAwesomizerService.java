@@ -67,13 +67,15 @@ public class PetAwesomizerService {
         for (Pet p : pet) {
             //creates a new PetSimplified object, sets the instance variables from the pet array
             PetSimplified obj = new PetSimplified();
+
+            //set pet name
             obj.setName(p.getName().get$t());
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
                 insertRN(obj.getName().replaceAll(" [^\\w].*", "").replaceAll(" [ at ].*", "").replaceAll("\\d.*", ""));
             }
-
+            //set Animal, Sex and Age
             obj.setAnimal("Animal: " + p.getAnimal().get$t());
             obj.setSex("Sex: " + p.getSex().get$t());
             obj.setAge("Age : " + p.getAge().get$t());
@@ -83,17 +85,22 @@ public class PetAwesomizerService {
 
             //determines sex of pet then changes gender pronouns if it's female
             //maps altered chuck norris fact to pet description instance variable
-            if (obj.getSex().contentEquals("F")) {
+            if (obj.getSex().contentEquals("Sex: F")) {
                 obj.setDescription(changeGender(getCNFact(obj.getName())));
+
             } else {
                 obj.setDescription(getCNFact(obj.getName()));
+
             }
+
             //sets a default photo if no image is available
             try {
                 obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
             } catch (Exception e) {
                 obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
             }
+
+            //Set Email
             obj.setEmail("Contact Email: " + p.getContact().getEmail().get$t());
 
             //adds each new object to the ArrayList
@@ -123,14 +130,18 @@ public class PetAwesomizerService {
         //maps altered chuck norris fact to pet description instance variable
         if (obj.getSex().contentEquals("F")) {
             obj.setDescription(changeGender(getCNFact(obj.getName())));
+
         } else {
             obj.setDescription(getCNFact(obj.getName()));
         }
+
+        //sets a default photo if no image is available
         try {
             obj.setPhoto(urlFormater(pet.getPetfinder().getPet().getMedia().getPhotos().getPhoto()[0].get$t()));
         } catch (Exception e) {
             obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
         }
+         //set email
         obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
 
         //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
