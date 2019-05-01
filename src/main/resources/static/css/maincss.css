@@ -70,7 +70,9 @@
         margin: 5px;
         border: solid 5px #f29040;
         border-radius: 8px;
-        height:500px;
+        max-width:700px;
+        height:450px;
+
                 }
 
     .row{
@@ -107,9 +109,10 @@
        }
 
     #randomform{
-        margin-top:30px;
+        margin-top:10px;
        }
 
     #randombtn{
-        margin-top:7px;
+        margin-top:1px;
+        margin-bottom:5px;
        }

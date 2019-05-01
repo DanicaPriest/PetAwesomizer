@@ -18,15 +18,15 @@
 
 
         <div class="col-sm-1"></div>
-        <div class="col-sm-4" id="main">
+        <div class="col-sm-7" id="main">
 
-            <img class="img-responsive center-block" id="petIMG" th:src="${p.photo}"/>
+            <img class="img-responsive center-block" class="petIMG" th:src="${p.photo}"/>
 
         </div>
 
         <div>
 
-            <div id="petinfo" class="col-sm-6 center-block" >
+            <div id="petinfo" class="col-sm-4 center-block" >
 
                 <h1 id="petName" th:text="${p.name}"></h1>
                 <p id="animal" th:text="${p.animal}" ></p>
@@ -50,7 +50,7 @@
 
 </div>
 
-</div>
+
 
 </body>
 </html>

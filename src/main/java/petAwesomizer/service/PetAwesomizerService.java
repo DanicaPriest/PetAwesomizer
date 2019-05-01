@@ -5,12 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import petAwesomizer.mapper.PetAwesomizerMapper;
+import petAwesomizer.model.*;
 import petAwesomizer.model.Breeds.Breed;
 import petAwesomizer.model.Breeds.BreedRoot;
-import petAwesomizer.model.CNRoot;
-import petAwesomizer.model.Pet;
-import petAwesomizer.model.PetRoot;
-import petAwesomizer.model.PetSimplified;
 import petAwesomizer.model.Random.Randyroot;
 
 import java.util.ArrayList;
@@ -35,14 +32,37 @@ public class PetAwesomizerService {
         return pets;
     }
 
+
     //maps chuck norris fact to an object and replaces chuck norris with the pet's name
     public String getCNFact(String name) {
         String u = "http://api.icndb.com/jokes/random?exclude=[explicit]&escape=javascript&firstName=" + name;
         CNRoot cn = restTemplate.getForObject(u, CNRoot.class);
-        //removes "Norris from the text
-        String joke = cn.getValue().getJoke().replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
 
-        return joke;
+        //gets fact as a String from api
+        String cnfact = cn.getValue().getJoke();
+
+        //checks database to see if fact has been reported and removes it if so
+        ArrayList<RCNRoot> cnRoots = petAwesomizerMapper.getAllRCNFacts();
+boolean reported = false;
+
+        for (RCNRoot c: cnRoots) {
+
+
+            if (c.getReportedcnfact().contains(cnfact)) {
+                System.out.println("reported fact caught");
+                reported = true;
+            }
+        }
+        if (reported){
+            String joke = "This fact has been removed";
+            return joke;
+        }
+        else {
+            //removes "Norris from the text
+            String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
+            return joke;
+        }
+
     }
 
     //changes gender pronouns in description to match sex of pet
