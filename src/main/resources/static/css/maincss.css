@@ -116,3 +116,33 @@
         margin-top:1px;
         margin-bottom:5px;
        }
+
+    #buttons{
+       margin-top:5px;
+       }
+
+    #laserbun{
+       margin-left:10%;
+       position:absolute;
+       z-index:-1;
+       }
+
+    .errorbtn {
+      font-size: 20px;
+      display:inline;
+      margin-top:5px;
+    }
+
+    #errortitle{
+       margin-top:20px;
+       color:black;
+       padding: 5px;
+
+            }
+    .errorbtns{
+        display:inline;
+        margin:10px;
+            }
+    #reason{
+        padding-top:10px;
+}
