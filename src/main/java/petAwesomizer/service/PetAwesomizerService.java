@@ -88,7 +88,13 @@ public class PetAwesomizerService {
 
     //maps the petfinder data to a cleaner format and excludes unneeded data
     public ArrayList<PetSimplified> mapPets(String location, String animal, String age, String sex, String count) {
+        //clears the temp database
+        deleteTempTable();
+
+        //maps pets
         Pet[] pet = searchPets(location, animal, age, sex, count).getPetfinder().getPets().getPet();
+
+        //creates new Array list
         ArrayList<PetSimplified> objArray = new ArrayList();
 
         //testing pet count
@@ -145,6 +151,8 @@ public class PetAwesomizerService {
         return objArray;
 
     }
+
+
 
     //gets a random pet from the petfinder api and maps it to the PetSimplified object
     //user can limit result to animal type
@@ -216,4 +224,9 @@ public class PetAwesomizerService {
 
     }
 
+    //clears the temp table and resets the AI to 1
+    public void deleteTempTable(){
+        petAwesomizerMapper.deletetempcnfacts();
+        petAwesomizerMapper.aiReset();
+    }
 }

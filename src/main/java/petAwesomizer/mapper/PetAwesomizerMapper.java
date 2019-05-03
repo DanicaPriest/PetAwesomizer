@@ -1,10 +1,7 @@
 package petAwesomizer.mapper;
 
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import petAwesomizer.model.CNRoot;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.model.RCNRoot;
@@ -27,6 +24,7 @@ public interface PetAwesomizerMapper {
     String INSERT_CNFACT = "INSERT INTO `pet_awesomizer`.tempcnfacts (joke) " +
             "VALUES (#{joke})";
     String DELETE_TEMPCNFACTS = "DELETE FROM `pet_awesomizer`.tempcnfacts";
+    String AI_RESET = "ALTER TABLE `pet_awesomizer`.tempcnfacts AUTO_INCREMENT = 1";
 
    @Insert(INSERT_PETS)
     public int insertPetsAll(PetSimplified petSimplified);
@@ -48,6 +46,9 @@ public interface PetAwesomizerMapper {
 
     @Delete(DELETE_TEMPCNFACTS)
     public void deletetempcnfacts();
+
+    @Update(AI_RESET)
+    public void aiReset();
 
 
 
