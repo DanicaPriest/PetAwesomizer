@@ -1,12 +1,14 @@
 package petAwesomizer.mapper;
 
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import petAwesomizer.model.CNRoot;
 import petAwesomizer.model.PetSimplified;
 import petAwesomizer.model.RCNRoot;
+import petAwesomizer.model.Value;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,9 @@ public interface PetAwesomizerMapper {
             "VALUES (#{reportedCNFact})";
     String GET_RCNFACT = "SELECT * FROM `pet_awesomizer`.reportedCNfacts where reportedCNFact = #{reportedCNFact}";
     String GET_ALL__RCNFACTS = "SELECT * FROM `pet_awesomizer`.reportedCNfacts";
+    String INSERT_CNFACT = "INSERT INTO `pet_awesomizer`.tempcnfacts (joke) " +
+            "VALUES (#{joke})";
+    String DELETE_TEMPCNFACTS = "DELETE FROM `pet_awesomizer`.tempcnfacts";
 
    @Insert(INSERT_PETS)
     public int insertPetsAll(PetSimplified petSimplified);
@@ -37,5 +42,13 @@ public interface PetAwesomizerMapper {
 
     @Select(GET_ALL__RCNFACTS)
     public ArrayList<RCNRoot> getAllRCNFacts();
+
+    @Insert(INSERT_CNFACT)
+    public int insertCNFact(Value value);
+
+    @Delete(DELETE_TEMPCNFACTS)
+    public void deletetempcnfacts();
+
+
 
 }

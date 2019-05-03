@@ -38,12 +38,19 @@ public class PetAwesomizerService {
         String u = "http://api.icndb.com/jokes/random?exclude=[explicit]&escape=javascript&firstName=" + name;
         CNRoot cn = restTemplate.getForObject(u, CNRoot.class);
 
+
         //gets fact as a String from api
         String cnfact = cn.getValue().getJoke();
 
+        //inserts the original fact into the temporary database in case fact needs to be reported
+        CNRoot temp = cn;
+        temp.getValue().setJoke(cn.getValue().getJoke().replaceAll(name, "Chuck"));
+        petAwesomizerMapper.insertCNFact(temp.getValue());
+
         //checks database to see if fact has been reported and removes it if so
         ArrayList<RCNRoot> cnRoots = petAwesomizerMapper.getAllRCNFacts();
-boolean reported = false;
+
+        boolean reported = false;
 
         for (RCNRoot c: cnRoots) {
 
@@ -58,6 +65,7 @@ boolean reported = false;
             return joke;
         }
         else {
+
             //removes "Norris from the text
             String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
             return joke;
@@ -83,6 +91,9 @@ boolean reported = false;
         Pet[] pet = searchPets(location, animal, age, sex, count).getPetfinder().getPets().getPet();
         ArrayList<PetSimplified> objArray = new ArrayList();
 
+        //testing pet count
+        int petnum = 1;
+
         //loops over the pet array
         for (Pet p : pet) {
             //creates a new PetSimplified object, sets the instance variables from the pet array
@@ -90,6 +101,11 @@ boolean reported = false;
 
             //set pet name
             obj.setName(p.getName().get$t());
+
+            //testing pet count
+
+            System.out.println(obj.getName() + ": " + petnum);
+            petnum++;
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
