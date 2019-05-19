@@ -12,7 +12,7 @@
 <h1 class="title text-center" id="searchtitle">Awesome <span th:text="${animal}"></span> available for adoption near <span
         th:text="${location}"></span>! </h1>
 <div class="container-fluid">
-    <div class="row" th:block th:each="p : ${pets}">
+    <div class="row" id="block" th:block th:each="p : ${pets}">
 
     <h2 id="fact" th:utext="${p.description}" class="text-center"></h2>
 
@@ -38,7 +38,7 @@
 
             </div>
         </div>
-        <div class="container-fluid"
+        <div class="container-fluid">
         <div class="row">
 
         <form th:action="@{/petawesomizer/}" action="/"
