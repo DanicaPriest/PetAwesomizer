@@ -40,7 +40,8 @@
                     </button>
                 </form>
                 <form th:action="@{/petawesomizer/report}" action="/"
-                      method="get">
+                      method="post" th:object="${petSimplified}">
+
                     <button id="randomreport" class="btn btnclass randomform" type="submit">Report Inappropriate Content
                     </button>
                 </form>

@@ -27,10 +27,12 @@
         </div>
 
         <div>
+            <form th:action="@{/petawesomizer/report}" action="/"
+                  method="post" th:object="${petSimplified}">
 
             <div id="petinfo" class="col-sm-5 center-block" >
 
-                <h1 id="petName" th:text="${p.name}"></h1>
+                <h1 id="petName" th:text=" ${p.id} + '. ' + ${p.name}"></h1>
                 <p id="animal" th:text="${p.animal}" ></p>
                 <p id="sex" th:text="${p.sex}"></p>
                 <p id="age" th:text="${p.age}"></p>
@@ -39,6 +41,10 @@
 
 
             </div>
+
+                <button id="report" class="btn btnclass" type="submit">Report Inappropriate Content
+                </button>
+            </form>
         </div>
        </div>
         <div class="container-fluid">
@@ -50,11 +56,7 @@
             </button>
         </form>
 
-        <form th:action="@{/petawesomizer/report}" action="/"
-              method="get">
-            <button id="report" class="btn btnclass" type="submit">Report Inappropriate Content
-            </button>
-        </form>
+
         </div>
     </div>
 
