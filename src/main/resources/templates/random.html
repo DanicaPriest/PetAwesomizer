@@ -34,9 +34,14 @@
                     <button class="btn btnclass" type="submit" >New Random Pet
                     </button>
                 </form>
-                <form id="randomform"  th:action="@{/petawesomizer/}" action="/"
+                <form id="randomsearch"  th:action="@{/petawesomizer/}" action="/"
                       method="get" >
-                    <button class="btn btnclass" id="randomsearchbtn" type="submit" >Search Pets in Your Area
+                    <button class="btn btnclass randomform" id="randomsearchbtn" type="submit" >Search Pets in Your Area
+                    </button>
+                </form>
+                <form th:action="@{/petawesomizer/report}" action="/"
+                      method="get">
+                    <button id="randomreport" class="btn btnclass randomform" type="submit">Report Inappropriate Content
                     </button>
                 </form>
 
