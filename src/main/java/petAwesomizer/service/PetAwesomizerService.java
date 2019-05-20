@@ -52,7 +52,7 @@ public class PetAwesomizerService {
 
         boolean reported = false;
 
-        for (RCNRoot c: cnRoots) {
+        for (RCNRoot c : cnRoots) {
 
 
             if (c.getReportedcnfact().contains(cnfact)) {
@@ -60,11 +60,10 @@ public class PetAwesomizerService {
                 reported = true;
             }
         }
-        if (reported){
+        if (reported) {
             String joke = "This fact has been removed";
             return joke;
-        }
-        else {
+        } else {
 
             //removes "Norris from the text
             String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
@@ -108,10 +107,12 @@ public class PetAwesomizerService {
             //set pet name
             obj.setName(p.getName().get$t());
 
-            //testing pet count
+            //set pet id
+            obj.setId(petnum);
 
+            //testing pet count
             System.out.println(obj.getName() + ": " + petnum);
-            petnum++;
+
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
@@ -147,21 +148,27 @@ public class PetAwesomizerService {
 
             //adds each new object to the ArrayList
             objArray.add(obj);
+
+            //increase id number
+            petnum++;
         }
         return objArray;
 
     }
 
 
-
     //gets a random pet from the petfinder api and maps it to the PetSimplified object
     //user can limit result to animal type
     public PetSimplified getRandomPet(String animal, String breed) {
+        //clears the temp database
+        deleteTempTable();
+
         String webUrl = "http://api.petfinder.com/pet.getRandom?key=9bce8b750600914be2415a1932012ee0&output=basic&format=json" + "&animal=" + animal + "&breed=" + breed;
 
         Randyroot pet = restTemplate.getForObject(webUrl, Randyroot.class);
         PetSimplified obj = new PetSimplified();
 
+        obj.setId(1);
         obj.setName(pet.getPetfinder().getPet().getName().get$t());
         obj.setAnimal(pet.getPetfinder().getPet().getAnimal().get$t());
         obj.setSex(pet.getPetfinder().getPet().getSex().get$t());
@@ -185,7 +192,7 @@ public class PetAwesomizerService {
         } catch (Exception e) {
             obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
         }
-         //set email
+        //set email
         obj.setEmail(pet.getPetfinder().getPet().getContact().getEmail().get$t());
 
         //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
@@ -225,8 +232,14 @@ public class PetAwesomizerService {
     }
 
     //clears the temp table and resets the AI to 1
-    public void deleteTempTable(){
+    public void deleteTempTable() {
         petAwesomizerMapper.deletetempcnfacts();
         petAwesomizerMapper.aiReset();
+    }
+
+    //inserts reported fact into reported facts database
+    public void reportFact(int id) {
+        CNRoot fact = petAwesomizerMapper.getTemp(id);
+        petAwesomizerMapper.insertRCNFact(fact);
     }
 }

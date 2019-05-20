@@ -25,6 +25,7 @@ public interface PetAwesomizerMapper {
             "VALUES (#{joke})";
     String DELETE_TEMPCNFACTS = "DELETE FROM `pet_awesomizer`.tempcnfacts";
     String AI_RESET = "ALTER TABLE `pet_awesomizer`.tempcnfacts AUTO_INCREMENT = 1";
+    String GET_TEMPCNFACT = "SELECT * FROM `pet_awesomizer`.tempcnfacts where id = #{id}";
 
    @Insert(INSERT_PETS)
     public int insertPetsAll(PetSimplified petSimplified);
@@ -49,6 +50,9 @@ public interface PetAwesomizerMapper {
 
     @Update(AI_RESET)
     public void aiReset();
+
+    @Select(GET_TEMPCNFACT)
+    public CNRoot getTemp(int id);
 
 
 

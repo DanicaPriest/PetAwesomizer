@@ -1,6 +1,7 @@
 package petAwesomizer.model;
 
 public class PetSimplified {
+    int id;
     String name;
     String animal;
     String sex;
@@ -9,6 +10,14 @@ public class PetSimplified {
     String description;
     String photo;
     String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLocation() {
         return location;
