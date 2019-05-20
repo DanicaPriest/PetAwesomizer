@@ -107,12 +107,11 @@ public class PetAwesomizerController {
     @RequestMapping("/report")
     public ModelAndView report(@ModelAttribute PetSimplified petSimplified) {
         ModelAndView modelAndView = new ModelAndView();
-       /* if (petSimplified.getId() < 1){
+      if (petSimplified.getId() < 1){
             petAwesomizerService.reportFact(1);
         }
         else{
-        petAwesomizerService.reportFact(petSimplified.getId());}*/
-        petAwesomizerService.reportFact(1);
+        petAwesomizerService.reportFact(petSimplified.getId());}
         modelAndView.addObject("reason", "Thank you for reporting inappropriate content");
         modelAndView.addObject("message", "This has now been removed from the database and will not appear again");
         modelAndView.setViewName("error");
