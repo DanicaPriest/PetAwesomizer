@@ -69,7 +69,7 @@ public class PetAwesomizerService {
 
             //removes "Norris from the text
             String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
-            System.out.println("test cn fact 4");
+
             return joke;
         }
 
@@ -114,7 +114,7 @@ public class PetAwesomizerService {
             obj.setId(petnum);
 
             //testing pet count
-            System.out.println(obj.getName() + ": " + petnum);
+           // System.out.println(obj.getName() + ": " + petnum);
 
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
@@ -138,25 +138,23 @@ public class PetAwesomizerService {
                 obj.setDescription(getCNFact(obj.getName()));
             }
 
-            System.out.println("test 4");
-            System.out.println(obj.getDescription());
+
             //sets a default photo if no image is available
             try {
                 obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
             } catch (Exception e) {
                 obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
             }
-            System.out.println(obj.getPhoto());
+
             //Set Email
             obj.setEmail("Contact Email: " + p.getContact().getEmail().get$t());
-            System.out.println(obj.getEmail());
-            System.out.println(obj.getId());
+
             //adds each new object to the ArrayList
             objArray.add(obj);
 
             //increase id number
             petnum++;
-            System.out.println("pet num test");
+
         }
         return objArray;
 
@@ -245,7 +243,11 @@ public class PetAwesomizerService {
 
     //inserts reported fact into reported facts database
     public void reportFact(int id) {
-        CNRoot fact = petAwesomizerMapper.getTemp(id);
-        petAwesomizerMapper.insertRCNFact(fact);
+       RCNRoot fact = petAwesomizerMapper.getTemp(id);
+        System.out.println(fact.getJoke());
+
+        petAwesomizerMapper.insertRCNFact(fact.getJoke());
+
+
     }
 }

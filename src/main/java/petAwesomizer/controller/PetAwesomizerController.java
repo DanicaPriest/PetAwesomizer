@@ -79,39 +79,40 @@ public class PetAwesomizerController {
             @RequestParam(value = "breed", required = false, defaultValue = "") String breed
     ) {
         ModelAndView modelAndView = new ModelAndView();
-        try{
-        PetSimplified pet = petAwesomizerService.getRandomPet(animal, breed);
+        try {
+            PetSimplified pet = petAwesomizerService.getRandomPet(animal, breed);
 
-        //setting thymeleaf object variables
-        modelAndView.addObject("petName", pet.getName());
-        modelAndView.addObject("petPhoto", pet.getPhoto());
-        modelAndView.addObject("animal", "Animal: " + pet.getAnimal());
-        modelAndView.addObject("sex", "Sex: " + pet.getSex());
-        modelAndView.addObject("age", "Age: " + pet.getAge());
-        modelAndView.addObject("location", "Location: " + pet.getLocation());
-        modelAndView.addObject("email", "Contact email: " + pet.getEmail());
-        modelAndView.addObject("petFact", pet.getDescription());
-        modelAndView.setViewName("random");}
-        catch(NullPointerException ne) {
+            //setting thymeleaf object variables
+            modelAndView.addObject("petName", pet.getName());
+            modelAndView.addObject("petPhoto", pet.getPhoto());
+            modelAndView.addObject("animal", "Animal: " + pet.getAnimal());
+            modelAndView.addObject("sex", "Sex: " + pet.getSex());
+            modelAndView.addObject("age", "Age: " + pet.getAge());
+            modelAndView.addObject("location", "Location: " + pet.getLocation());
+            modelAndView.addObject("email", "Contact email: " + pet.getEmail());
+            modelAndView.addObject("petFact", pet.getDescription());
+            modelAndView.setViewName("random");
+        } catch (NullPointerException ne) {
             CustomException error = controllerAdviceClass.handle411(ne);
             modelAndView.addObject("reason", ne.getMessage());
             modelAndView.addObject("message", error.getMessage());
             modelAndView.setViewName("error");
-            return modelAndView;}
+            return modelAndView;
+        }
 
         return modelAndView;
     }
 
-//reports inappropriate content
+    //reports inappropriate content
     @RequestMapping("/report")
     public ModelAndView report(@ModelAttribute PetSimplified petSimplified) {
         ModelAndView modelAndView = new ModelAndView();
-        if (petSimplified.getId() < 1){
+       /* if (petSimplified.getId() < 1){
             petAwesomizerService.reportFact(1);
         }
         else{
-        petAwesomizerService.reportFact(petSimplified.getId());}
-
+        petAwesomizerService.reportFact(petSimplified.getId());}*/
+        petAwesomizerService.reportFact(1);
         modelAndView.addObject("reason", "Thank you for reporting inappropriate content");
         modelAndView.addObject("message", "This has now been removed from the database and will not appear again");
         modelAndView.setViewName("error");

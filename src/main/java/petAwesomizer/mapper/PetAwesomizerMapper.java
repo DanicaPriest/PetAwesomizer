@@ -18,7 +18,7 @@ public interface PetAwesomizerMapper {
             "VALUES (#{name})";
 
     String INSERT_RCNFACT = "INSERT INTO `pet_awesomizer`.reportedCNfacts (joke) " +
-            "VALUES (#{reportedCNFact})";
+            "VALUES (#{joke})";
     String GET_RCNFACT = "SELECT * FROM `pet_awesomizer`.reportedCNfacts where joke = #{joke}";
     String GET_ALL__RCNFACTS = "SELECT * FROM `pet_awesomizer`.reportedCNfacts";
     String INSERT_CNFACT = "INSERT INTO `pet_awesomizer`.tempcnfacts (joke) " +
@@ -34,7 +34,7 @@ public interface PetAwesomizerMapper {
     public int insertRabbitName(String rabbit);
 
     @Insert(INSERT_RCNFACT)
-    public int insertRCNFact(CNRoot cnRoot);
+    public int insertRCNFact(String joke);
 
     @Select(GET_RCNFACT)
     public CNRoot getRCNFact(String cnFact);
@@ -52,7 +52,7 @@ public interface PetAwesomizerMapper {
     public void aiReset();
 
     @Select(GET_TEMPCNFACT)
-    public CNRoot getTemp(int id);
+    public RCNRoot getTemp(int id);
 
 
 
