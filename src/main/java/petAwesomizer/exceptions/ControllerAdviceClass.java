@@ -54,7 +54,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
     CustomException handle401(MissingServletRequestParameterException er) {
         CustomException error = new CustomException();
         error.setReason(er.getParameterName() + " is missing");
-        error.setMessage("user and api-key parameters are required for access to TacoCatFacts (you don't want to give the power of TacoCatFacts to just anyone!)");
+        error.setMessage("user and api-key parameters are required for access");
         error.setStatus(400);
         return error;
     }
@@ -83,7 +83,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
     public @ResponseBody
     CustomException handle411(NullPointerException e) {
         CustomException error = new CustomException();
-        error.setReason(e.getMessage());
+       error.setReason(e.getMessage());
         error.setMessage("Your location is not recognized (check spelling)");
         error.setStatus(404);
         return error;

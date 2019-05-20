@@ -17,9 +17,9 @@ public interface PetAwesomizerMapper {
     String INSERT_RABBIT_NAME = "INSERT INTO `nnproject`.rabbits (name) " +
             "VALUES (#{name})";
 
-    String INSERT_RCNFACT = "INSERT INTO `pet_awesomizer`.reportedCNfacts (reportedCNFact) " +
+    String INSERT_RCNFACT = "INSERT INTO `pet_awesomizer`.reportedCNfacts (joke) " +
             "VALUES (#{reportedCNFact})";
-    String GET_RCNFACT = "SELECT * FROM `pet_awesomizer`.reportedCNfacts where reportedCNFact = #{reportedCNFact}";
+    String GET_RCNFACT = "SELECT * FROM `pet_awesomizer`.reportedCNfacts where joke = #{joke}";
     String GET_ALL__RCNFACTS = "SELECT * FROM `pet_awesomizer`.reportedCNfacts";
     String INSERT_CNFACT = "INSERT INTO `pet_awesomizer`.tempcnfacts (joke) " +
             "VALUES (#{joke})";

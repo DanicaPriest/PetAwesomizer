@@ -2,7 +2,7 @@ package petAwesomizer.model;
 
 public class RCNRoot {
     int id;
-    String reportedcnfact;
+    String joke;
 
     public int getId() {
         return id;
@@ -12,12 +12,12 @@ public class RCNRoot {
         this.id = id;
     }
 
-    public String getReportedcnfact() {
-        return reportedcnfact;
+    public String getJoke() {
+        return joke;
     }
 
-    public void setReportedcnfact(String reportedcnfact) {
-        this.reportedcnfact = reportedcnfact;
+    public void setJoke(String joke) {
+        this.joke = joke;
     }
 }
 

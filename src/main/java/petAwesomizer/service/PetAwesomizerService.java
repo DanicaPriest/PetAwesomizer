@@ -47,6 +47,7 @@ public class PetAwesomizerService {
         temp.getValue().setJoke(cn.getValue().getJoke().replaceAll(name, "Chuck"));
         petAwesomizerMapper.insertCNFact(temp.getValue());
 
+
         //checks database to see if fact has been reported and removes it if so
         ArrayList<RCNRoot> cnRoots = petAwesomizerMapper.getAllRCNFacts();
 
@@ -55,9 +56,10 @@ public class PetAwesomizerService {
         for (RCNRoot c : cnRoots) {
 
 
-            if (c.getReportedcnfact().contains(cnfact)) {
+            if (c.getJoke().contains(cnfact)) {
                 System.out.println("reported fact caught");
                 reported = true;
+
             }
         }
         if (reported) {
@@ -67,6 +69,7 @@ public class PetAwesomizerService {
 
             //removes "Norris from the text
             String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
+            System.out.println("test cn fact 4");
             return joke;
         }
 
@@ -133,24 +136,27 @@ public class PetAwesomizerService {
 
             } else {
                 obj.setDescription(getCNFact(obj.getName()));
-
             }
 
+            System.out.println("test 4");
+            System.out.println(obj.getDescription());
             //sets a default photo if no image is available
             try {
                 obj.setPhoto(urlFormater(p.getMedia().getPhotos().getPhoto()[0].get$t()));
             } catch (Exception e) {
                 obj.setPhoto("https://cdn.shopify.com/s/files/1/0489/4081/products/cat-riding-a-fire-breathing-unicorn-decal_1024x1024.jpg?v=1407574957");
             }
-
+            System.out.println(obj.getPhoto());
             //Set Email
             obj.setEmail("Contact Email: " + p.getContact().getEmail().get$t());
-
+            System.out.println(obj.getEmail());
+            System.out.println(obj.getId());
             //adds each new object to the ArrayList
             objArray.add(obj);
 
             //increase id number
             petnum++;
+            System.out.println("pet num test");
         }
         return objArray;
 
