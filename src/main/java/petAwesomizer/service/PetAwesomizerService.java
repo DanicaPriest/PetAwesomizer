@@ -244,7 +244,7 @@ public class PetAwesomizerService {
     //inserts reported fact into reported facts database
     public void reportFact(int id) {
        RCNRoot fact = petAwesomizerMapper.getTemp(id);
-        System.out.println(fact.getJoke());
+        System.out.println(id);
 
         petAwesomizerMapper.insertRCNFact(fact.getJoke());
 
