@@ -27,8 +27,7 @@
         </div>
 
         <div>
-            <form th:action="@{/petawesomizer/report}" action="/"
-                  method="post" th:object="${petSimplified}">
+
 
             <div id="petinfo" class="col-sm-5 center-block" >
 
@@ -42,9 +41,7 @@
 
             </div>
 
-                <button id="report" class="btn btnclass" type="submit">Report Inappropriate Content
-                </button>
-            </form>
+
         </div>
        </div>
         <div class="container-fluid">
@@ -55,8 +52,14 @@
             <button id="back" class="btn btnclass" type="submit">Back to Search
             </button>
         </form>
+            <form th:action="@{/petawesomizer/report}" action="/"
+                  method="post" th:object="${petSimplified}">
 
-
+                <input type="number"  th:attr="value= ${p.id}" th:value = "${p.id}"
+                         th:field="*{id}"/>
+                <button id="report" class="btn btnclass" type="submit">Report Inappropriate Content
+                </button>
+            </form>
         </div>
     </div>
 

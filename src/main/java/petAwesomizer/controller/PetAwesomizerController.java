@@ -42,7 +42,7 @@ public class PetAwesomizerController {
 
     //searches the petfinder database by location and animal and returns the nearest results to search.html
     @PostMapping("/search")
-    public ModelAndView searchResults(@ModelAttribute FormCommand formCommand) throws HttpMessageNotReadableException {
+    public ModelAndView searchResults(@ModelAttribute FormCommand formCommand, PetSimplified petSimplified) throws HttpMessageNotReadableException {
         ModelAndView modelAndView = new ModelAndView();
         try {
 
@@ -107,6 +107,7 @@ public class PetAwesomizerController {
     @RequestMapping("/report")
     public ModelAndView report(@ModelAttribute PetSimplified petSimplified) {
         ModelAndView modelAndView = new ModelAndView();
+
       if (petSimplified.getId() < 1){
             petAwesomizerService.reportFact(1);
         }
