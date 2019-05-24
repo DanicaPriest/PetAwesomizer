@@ -151,3 +151,12 @@
         font-size:20px;
         margin: 20px;
     }
+     option{
+        background-color:blue;
+        background: blue;
+
+}
+    select{
+        background-color:blueViolet;
+    }
+

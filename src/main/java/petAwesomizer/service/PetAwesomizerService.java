@@ -63,7 +63,7 @@ public class PetAwesomizerService {
             }
         }
         if (reported) {
-            String joke = "This fact has been removed";
+            String joke = name + " agrees with all of your political beliefs";
             return joke;
         } else {
 
@@ -112,10 +112,6 @@ public class PetAwesomizerService {
 
             //set pet id
             obj.setId(petnum);
-
-            //testing pet count
-           // System.out.println(obj.getName() + ": " + petnum);
-
 
             //if animal is a rabbit inserts rabbit name into the mysql database for Neural network project
             if (p.getAnimal().get$t().contentEquals("Rabbit")) {
@@ -243,8 +239,7 @@ public class PetAwesomizerService {
 
     //inserts reported fact into reported facts database
     public void reportFact(int id) {
-       RCNRoot fact = petAwesomizerMapper.getTemp(id);
-        System.out.println(id);
+        RCNRoot fact = petAwesomizerMapper.getTemp(id);
 
         petAwesomizerMapper.insertRCNFact(fact.getJoke());
 
