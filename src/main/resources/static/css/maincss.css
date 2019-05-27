@@ -48,7 +48,12 @@
     body{
         background:#ffec9b;
         color:#070303;
-        padding:5px;
+       border: 30px solid transparent;
+        -webkit-border-image: url(/images/daisy.png) 70 round; /* Safari 3.1-5 */
+        -o-border-image: url(/images/daisy.png) 70 round; /* Opera 11-12.1 */
+        border-image: url(/images/daisy.png) 70 round;
+      }
+
         }
 
     #homerandombtn{
@@ -185,6 +190,10 @@
         max-width:307px;
         height:100%;}
         }
+        form{
+        background-color: rgba(255, 236, 155, 0.9);
+        }
+
         @media screen and (max-width:306px){
 
                 #homesearchbtn{
