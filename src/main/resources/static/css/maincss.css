@@ -37,9 +37,11 @@
 
         }
 
-    #pony{
-        margin-top:-145px;
+    #bunny{
+        margin-top:-375px;
+        margin-right:20px;
         float:right;
+        width:220px;
         }
 
 
@@ -65,6 +67,7 @@
     p{
         color:#070303 ;
         font-size: 20px;
+        background:#ffec9b;
         }
 
     .petIMG{
@@ -83,6 +86,7 @@
     #petName{
         text-decoration: underline;
         text-shadow: 1px 1px 1px #ec3c05;
+         background:#ffec9b;
                 }
 
     #searchtitle{
@@ -160,4 +164,33 @@
         }
 
 
+    @media screen and (max-width:768px){
+    #bunny{
+    position:relative;
+    opacity:0.5;
+    z-index:-1;
+    }
+    }
+    @media screen and (max-width:392px){
+        #bunny{
+        position:relative;
+        opacity:0.25;
+        }
+        .btnclass{
+        font-size:14px;
+        }
+        h2{
+        font-size:18px}
+        .petIMG{
+        max-width:307px;
+        height:100%;}
+        }
+        @media screen and (max-width:306px){
 
+                #homesearchbtn{
+                font-size:12px;
+                }
+                 .petIMG{
+                        max-width:280px;}
+                        }
+                }
