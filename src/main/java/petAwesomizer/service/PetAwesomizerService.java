@@ -68,8 +68,7 @@ public class PetAwesomizerService {
         } else {
 
             //removes "Norris from the text
-            String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1");
-            joke.replaceAll("(?i)roundhouse kick", "cuddle");
+            String joke = cnfact.replaceAll("Norris", "").replaceAll("^ +| +$|( )+", "$1").replaceAll("(?i)roundhouse kick", "cuddle").replaceAll("(?i)kill","cuddle");
             return joke;
         }
 

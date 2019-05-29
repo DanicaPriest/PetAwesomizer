@@ -176,16 +176,12 @@ border-image: none;
 }
 
     @media screen and (max-width:768px){
-    #bunny{
-    position:relative;
-    opacity:0.5;
-    z-index:-1;
-    }
+   .petIMG{
+   width:100%;}
     }
     @media screen and (max-width:392px){
         #bunny{
-        position:relative;
-        opacity:0.25;
+       display:none;
         }
         .btnclass{
         font-size:14px;
@@ -195,9 +191,10 @@ border-image: none;
         .petIMG{
         max-width:307px;
         height:100%;}
-        }
+
         form{
         background-color: rgba(255, 236, 155, 0.9);
+        }
         }
 
         @media screen and (max-width:306px){
@@ -208,4 +205,4 @@ border-image: none;
                  .petIMG{
                         max-width:280px;}
                         }
-                }
+
