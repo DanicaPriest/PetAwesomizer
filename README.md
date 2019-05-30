@@ -4,4 +4,7 @@ Users can search pets based on animal, age, gender and choose how many results t
 
 I've now added a button that reports content as inappropriate and adds it to a database of reported content. The reported fact will then never show up again. 
 
+this requires a MYSQL schema called 'petawesomizer' with two tables 'tempfacts' and 'reportedcnfacts'
+each table had an id column and a 'joke' column.
+
 
