@@ -1,8 +1,7 @@
-    $text-color:rgb(7, 3, 3);
 
 
     label{
-        color:$text-color;
+        color:#070303 ;
         font-size: 20px;
         display:inline;
         }
@@ -10,13 +9,13 @@
     h1{
         padding-top:10px;
         padding-bottom:15px;
-        color:$text-color;
+        color:#070303;
         text-shadow: 1px 1px 0px #ec3c05;
         }
 
     .btnclass {
         background: #f29040 ;
-        box-shadow: 3px 5px 2px $text-color;
+        box-shadow: 3px 5px 2px #070303;
         font-family: Georgia;
         font-size: 18px;
         text-decoration: none;
@@ -35,7 +34,7 @@
     .btnclass:active{
         background: rgb(255,236,155);
         background: radial-gradient(circle, rgba(255,236,155,1) 0%, rgba(242,144,64,1) 55%, rgba(236,60,5,1) 100%);
-        box-shadow: 0 3px $text-color;
+        box-shadow: 0 3px #070303;
         transform: translateY(4px);
 
         }
@@ -50,9 +49,8 @@
 
     body{
         background:#ffec9b;
-        color:$text-color;
+        color:#070303;
         }
-
         html{
         background:#ffec9b;
        border: 20px solid transparent;
@@ -69,7 +67,7 @@
         }
 
     h2{
-        color:$text-color;
+        color:#070303 ;
         padding: 10px;
         background-color:#f29040 ;
         border:solid 5px #ec3c05;
@@ -77,7 +75,7 @@
         }
 
     p{
-        color:$text-color;
+        color:#070303 ;
         font-size: 20px;
         background:#ffec9b;
         }
@@ -105,7 +103,7 @@
     #searchtitle{
         padding-top:5px;
         padding-bottom:5px;
-        color:$text-color;
+        color:#070303 ;
                         }
 
     #back{
