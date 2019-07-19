@@ -1,1 +1,0 @@
-web: java -jar target/PetAwesomizer-1.0.jar
